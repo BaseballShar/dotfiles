@@ -27,19 +27,17 @@ function ed
     nvim ~/.config/vifm/vifmrc
   case tm tmux
     nvim ~/.tmux.conf
-  case "*"
-    printf "Invalid argument: %s\n" $argv
+  case h help
     echo "ed: Shortcut for editing configs"
     echo "Usage: ed [sh|nv|kit|vm]"
+    echo "No argument: Fuzzy search all configs"
     echo "sh: Edit shell config"
     echo "nv: Edit nvim config"
     echo "kit: Edit kitty config"
     echo "vm: Edit vifm config"
+  case "*"
+    find ~/dotfiles -type f | fzf -m | xargs nvim
   end
-end
-
-function cf
-  find ~/.config -type f | fzf -m | xargs nvim
 end
 
 # A useful wrapper for nvim w/f fzf integration
