@@ -1,0 +1,139 @@
+{
+    "h1": {
+        "prefix": "h1",
+        "body": [
+            "<h1>${1:first}</h1>"
+        ],
+        "description": "Header level 1"
+    },
+    "h2": {
+        "prefix": "h2",
+        "body": [
+            "<h2>${1:first}</h2>"
+        ],
+        "description": "Header level 2"
+    },
+    "h3": {
+        "prefix": "h3",
+        "body": [
+            "<h3>${1:first}</h3>"
+        ],
+        "description": "Header level 3"
+    },
+    "h4": {
+        "prefix": "h4",
+        "body": [
+            "<h4>${1:first}</h4>"
+        ],
+        "description": "Header level 4"
+    },
+    "h5": {
+        "prefix": "h5",
+        "body": [
+            "<h5>${1:first}</h5>"
+        ],
+        "description": "Header level 5"
+    },
+    "h6": {
+        "prefix": "h6",
+        "body": [
+            "<h6>${1:first}</h6>"
+        ],
+        "description": "Header level 6"
+    },
+    "nav": {
+        "prefix": "nav",
+        "body": [
+            "<nav className='${1:first}'>",
+            "</nav>"
+        ],
+        "description": "Header level 6"
+    },
+    "divc": {
+        "prefix": "divc",
+        "body": [
+            "<div className='${1:first}'>",
+            "    ${2:second}",
+            "</div>"
+        ],
+        "description": "Division with class name"
+    },
+    "div": {
+        "prefix": "div",
+        "body": [
+            "<div>${1:first}</div>"
+        ],
+        "description": "Division"
+    },
+    "a": {
+        "prefix": "a",
+        "body": [
+            "<a href='${1:first}'>${2:second}</a>"
+        ],
+        "description": "Anchor"
+    },
+    "p": {
+        "prefix": "p",
+        "body": [
+            "<p>${1:first}</p>"
+        ],
+        "description": "Paragraph"
+    },
+    "button": {
+        "prefix": "button",
+        "body": [
+            "<button onClick={${1:first}}>${2:second}</button>"
+        ],
+        "description": "Button"
+    },
+    "Button": {
+        "prefix": "Button",
+        "body": [
+            "<Button onPress={${1:first}} title='${2:second}' />"
+        ],
+        "description": "React Native Button"
+    },
+    "input": {
+        "prefix": "input",
+        "body": [
+            "<input ${1:content} />}"
+        ],
+        "description": "Input"
+    },
+    "sfc": {
+        "prefix": "sfc",
+        "body": [
+            "const ${1:first} = () => {",
+            "    return (",
+            "        ${2:second}",
+            "    );",
+            "}",
+            "",
+            "export default ${1:first};"
+        ],
+        "description": "Stateless function component"
+    },
+    "view": {
+        "prefix": "view",
+        "body": [
+            "<View style=${1:first}>",
+            "",
+            "</View>"
+        ],
+        "description": "React Native View"
+    },
+    "textinput": {
+        "prefix": "textinput",
+        "body": [
+            "<TextInput ${1:first}/>"
+        ],
+        "description": "React Native Text Input"
+    },
+    "text": {
+        "prefix": "text",
+        "body": [
+            "<Text>${1:first}</Text>"
+        ],
+        "description": "React Native Text"
+    }
+}
