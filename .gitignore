@@ -8,9 +8,12 @@
 .config/fish/themes/
 .config/fish/fish_plugins
 .config/fish/fish_variables
-.config/fish/fishd.tmp.BpASOj
+.config/fish/fishd.tmp.*
 .config/fish/temp.fish
 
 # vifm
 .config/vifm/vifminfo.json
 .config/vifm/colors
+
+# lvim
+.config/lvim/lazy-lock.json

@@ -1,6 +1,7 @@
 # <--- Alias --->
 # Quick access to common directory
 alias doc='cd /Users/chanjason/Documents/Something'
+alias des='cd /Users/chanjason/Desktop'
 
 # Alias for modern linux commands
 alias b='btop'
@@ -8,6 +9,35 @@ alias c='__zoxide_z'
 alias ci='__zoxide_zi'
 alias lv='lvim'
 alias nvi='nvim'
+
+# Run anything from anywhere
+function run
+  # Search for code dir and file
+  set -l dir (ls ~/Documents/Code | fzf)
+  set -l path ~/Documents/Code/$dir
+  set -l file (find $path -type f | fzf)
+  switch $dir
+  # Invoke different interprets based on file extension
+  case Python
+    python $file
+  case Javascript
+    node $file
+  case Lua
+    lua $file
+  case '*'
+    echo "The user is too lazy to add more interpret support"
+  end
+end
+
+# Quickly jumps to a code directory
+# First select a coding language
+# Then fzf search for files to edit
+function code
+  set -l dir (ls ~/Documents/Code | fzf)
+  set -l path ~/Documents/Code/$dir
+  cd $path
+  find $path -type f | fzf | xargs nvim
+end
 
 # Listen to musics using the power of fzf
 function mu
@@ -20,7 +50,7 @@ function ed
   case sh fish shell
     nvim ~/.config/fish/*.fish
   case nv nvim
-    nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua
+    nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua ~/.config/nvim/lua/plugins/*.lua
   case kit kitty
     nvim ~/.config/kitty/kitty.conf
   case vm vifm
@@ -116,6 +146,7 @@ abbr -a --position anywhere gaa 'git add --all'
 abbr -a --position anywhere gb 'git branch'
 abbr -a --position anywhere gba 'git branch --all | less -F'
 abbr -a --position anywhere gc 'git commit'
+abbr -a --position anywhere gcm 'git commit --message'
 abbr -a --position anywhere gco 'git checkout'
 abbr -a --position anywhere gd 'git diff'
 abbr -a --position anywhere gdca 'git diff --cached'
@@ -128,11 +159,13 @@ abbr -a --position anywhere gl 'git pull'
 abbr -a --position anywhere grhh 'git reset --hard'
 abbr -a --position anywhere gr 'git reset'
 
+alias Gst='git status'
+
 # Alias for ls
 alias l='exa -F --sort=type'
 alias ll='exa -lh --time-style=iso --no-user --sort=type'
 alias la='exa -lha --time-style=long-iso --sort=type'
-alias lt='exa -T'
+alias lt='exa -T --sort=type'
 
 # Alias for programming languages
 alias py='python3'
