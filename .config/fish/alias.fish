@@ -9,6 +9,7 @@ alias c='__zoxide_z'
 alias ci='__zoxide_zi'
 alias lv='lvim'
 alias nvi='nvim'
+alias lg='lazygit'
 
 # Run anything from anywhere
 function run

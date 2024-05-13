@@ -17,7 +17,7 @@ export BAT_THEME="Solarized (dark)"
 fish_vi_key_bindings
 
 # fzf settings
-export FZF_DEFAULT_OPTS='--height 50% --reverse --border -m'
+export FZF_DEFAULT_OPTS='--height 80% --reverse --border -m --preview="bat --color=always {}"'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
