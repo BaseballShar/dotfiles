@@ -12,6 +12,9 @@ alias o='open .'
 alias p='pwd'
 alias pp='pwd -P'
 
+# fzf settings
+alias fzf-preview 'fzf --preview="bat --color=always {}"'
+
 # Alias for git
 abbr -a tiga 'tig --all'
 alias lg='lazygit'

@@ -22,7 +22,7 @@ export BAT_THEME="Solarized (dark)"
 fish_vi_key_bindings
 
 # fzf settings
-export FZF_DEFAULT_OPTS='--height 80% --reverse --border -m --preview="bat --color=always {}"'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border -m'
 
 function fish_greeting
   echo "Welcome back, Fisher Baseball!"

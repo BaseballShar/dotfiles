@@ -3,7 +3,7 @@ function run
   # Search for code dir and file
   set -l dir (ls ~/Documents/Code | fzf)
   set -l path ~/Documents/Code/$dir
-  set -l file (find $path -type f | fzf)
+  set -l file (find $path -type f | fzf-preview)
   switch $dir
   # Invoke different interprets based on file extension
   case Python
@@ -24,7 +24,7 @@ function code
   set -l dir (ls ~/Documents/Code | fzf)
   set -l path ~/Documents/Code/$dir
   cd $path
-  find $path -type f | fzf | xargs nvim
+  find $path -type f | fzf-preview | xargs nvim
 end
 
 # Listen to musics using the power of fzf
@@ -54,14 +54,14 @@ function ed
     echo "kit: Edit kitty config"
     echo "vm: Edit vifm config"
   case "*"
-    find ~/dotfiles -type f | fzf -m | xargs nvim
+    find ~/dotfiles -type f | fzf-preview -m | xargs nvim
   end
 end
 
 # A useful wrapper for nvim w/f fzf integration
 function nv
   if test (count $argv) -eq 0
-    nvim $(fzf)
+    nvim $(fzf-preview)
   else
     nvim $argv
   end
