@@ -1,6 +1,11 @@
-# Files to source, e.g. alias
-source /Users/chanjason/.config/fish/alias.fish
+# User defined alias
 source /Users/chanjason/.config/fish/temp.fish
+source /Users/chanjason/.config/fish/alias/path.fish
+source /Users/chanjason/.config/fish/alias/command.fish
+
+# User defined functions
+source /Users/chanjason/.config/fish/alias/function_fzf.fish
+source /Users/chanjason/.config/fish/alias/function_util.fish
 
 # Path to rust programs
 export PATH="$HOME/.cargo/bin:/Users/chanjason/.local/bin:$HOME/.ghcup/bin:$PATH"
@@ -18,6 +23,18 @@ fish_vi_key_bindings
 
 # fzf settings
 export FZF_DEFAULT_OPTS='--height 80% --reverse --border -m --preview="bat --color=always {}"'
+
+function fish_greeting
+  echo "Welcome back, Fisher Baseball!"
+end
+
+# Do not print vim mode on prompt
+function fish_vi_mode_prompt
+end
+
+# Initialisation
+zoxide init fish | source
+# starship init fish | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
