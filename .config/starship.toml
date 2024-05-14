@@ -32,4 +32,4 @@ grey = '#787878'
 
 [cmd_duration]
 min_time = 500
-format = '[$duration](red)'
+format = '[$duration](grey)'
