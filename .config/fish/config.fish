@@ -34,7 +34,7 @@ end
 
 # Initialisation
 zoxide init fish | source
-# starship init fish | source
+starship init fish | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
