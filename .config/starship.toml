@@ -4,43 +4,32 @@ format = '''
 $directory$git_branch$git_status$character
 '''
 
-right_format = '$git_metrics$time'
-
+right_format = '$cmd_duration'
 add_newline = true
-
 palette = 'term'
-
-[character]
-success_symbol = '[»](blue)'
 
 [directory]
 style = 'blue'
 truncate_to_repo = false
+truncation_length = 3
 truncation_symbol = '.../'
 
-[time]
-format = '[$time](grey)'
-disabled = false
-use_12hr = true
-
 [git_branch]
-format = '[\(](lightblue)[$branch](brightgreen)'
+format = '[$branch](green)'
 
 [git_status]
-format = '[$all_status$ahead_behind[\)](lightblue)](orange)'
+format = '[$all_status $ahead_behind(lightblue)](green)'
 untracked = '?'
-modified = '+'
+modified = '!'
 staged = '*'
 deleted = '-'
-
-[git_metrics]
-added_style = 'brightgreen'
-deleted_style = 'red'
-format = '\[[+$added]($added_style)/[-$deleted]($deleted_style)\] '
-disabled = false
 
 [palettes.term]
 brightgreen = '#5fd787'
 lightblue = '#5fafff'
 orange = '#ffaf01'
 grey = '#787878'
+
+[cmd_duration]
+min_time = 500
+format = '[$duration](red)'
