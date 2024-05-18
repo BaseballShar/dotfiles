@@ -1,7 +1,7 @@
 # ~/.config/starship.toml
 
 format = '''
-$directory$git_branch$git_status$character
+$directory$git_branch$git_status $character
 '''
 
 right_format = '$cmd_duration'
@@ -18,7 +18,7 @@ truncation_symbol = '.../'
 format = '[$branch](green)'
 
 [git_status]
-format = '[$all_status $ahead_behind(lightblue)](green)'
+format = '[$all_status$ahead_behind(lightblue)](green)'
 untracked = '?'
 modified = '!'
 staged = '*'
