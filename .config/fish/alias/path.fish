@@ -1,5 +1,5 @@
 # <--- Alias --->
 # Quick access to common directory
-alias doc='cd /Users/chanjason/Documents/Something'
-alias des='cd /Users/chanjason/Desktop'
+alias doc='cd ~/Documents'
+alias des='cd ~/Desktop'
 alias todo='nvim ~/vimwiki/index.md'

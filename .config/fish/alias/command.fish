@@ -2,12 +2,14 @@
 alias lv='lvim'
 alias nvi='nvim'
 alias vm='vifm .'
+alias rn='ranger'
 
 # Alias for modern linux commands
 alias b='btop'
 alias c='__zoxide_z'
 alias ci='__zoxide_zi'
 alias gdu='gdu-go'
+alias md='mkdir -p'
 alias o='open .'
 alias p='pwd'
 alias pp='pwd -P'
@@ -30,11 +32,13 @@ abbr -a --position anywhere gdca 'git diff --cached'
 abbr -a --position anywhere gdcas 'git diff --cached --stat'
 abbr -a --position anywhere gds 'git diff --stat'
 abbr -a --position anywhere gf 'git fetch'
-abbr -a --position anywhere gst 'git status'
-abbr -a --position anywhere gp 'git push'
 abbr -a --position anywhere gl 'git pull'
-abbr -a --position anywhere grhh 'git reset --hard'
+abbr -a --position anywhere gm 'git merge'
+abbr -a --position anywhere gp 'git push'
 abbr -a --position anywhere gr 'git reset'
+abbr -a --position anywhere grhh 'git reset --hard'
+abbr -a --position anywhere gs 'git stash'
+abbr -a --position anywhere gst 'git status'
 
 alias Gst='git status'
 
@@ -45,7 +49,7 @@ alias la='exa -lha --time-style=long-iso --sort=type'
 alias lt='exa -T --sort=type'
 
 # Alias for programming languages
-alias py='python3'
+alias py='python'
 alias ipy='ipython'
 
 # Alias for rebooting fish shell
