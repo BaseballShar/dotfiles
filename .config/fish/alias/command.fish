@@ -1,7 +1,6 @@
 # Alias for vim
 alias lv='lvim'
 alias nvi='nvim'
-alias vm='vifm .'
 alias rn='ranger'
 
 # Alias for modern linux commands
