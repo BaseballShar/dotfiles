@@ -1,0 +1,19 @@
+mod1:
+  - option
+  - control
+  - command
+
+mod2:
+  - option
+  - control
+  - command
+  - shift
+
+# Prevent conflict with open Kitty terminal
+select-tall-layout:
+  mod: mod2
+  key: a
+
+select-wide-layout:
+  mod: mod2
+  key: s
