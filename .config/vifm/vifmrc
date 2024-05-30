@@ -337,7 +337,7 @@ fileviewer {*.docx},
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
 "
 " Or leave it for automatic detection
-fileviewer *[^/] pygmentize -O style=solarized-dark -f console256 -g
+" fileviewer *[^/] pygmentize -O style=solarized-dark -f console256 -g
 
 " Displaying pictures in terminal
 " fileviewer *.jpg,*.png shellpic %c
@@ -377,7 +377,8 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
 " Open file in new MacVim tab
-nnoremap o :touch
+nnoremap o :touch<Space>
+nnoremap O :mkdir<Space>
 " Open file in new MacVim window
 " nnoremap O :!mvim %f<cr>
 
