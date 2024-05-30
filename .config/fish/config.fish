@@ -15,6 +15,9 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export SHELL='/usr/local/bin/fish'
 
+# Env variables
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
+
 # Bat theme
 export BAT_THEME="Solarized (dark)"
 
