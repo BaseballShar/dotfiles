@@ -1,8 +1,8 @@
 # Run anything from anywhere
 function run
   # Search for code dir and file
-  set -l dir (ls ~/Documents/Code | fzf)
-  set -l path ~/Documents/Code/$dir
+  set -l dir (ls ~/Code | fzf)
+  set -l path ~/Code/$dir
   set -l file (find $path -type f | fzf-preview)
   switch $dir
   # Invoke different interprets based on file extension
@@ -21,8 +21,8 @@ end
 # First select a coding language
 # Then fzf search for files to edit
 function code
-  set -l dir (ls ~/Documents/Code | fzf)
-  set -l path ~/Documents/Code/$dir
+  set -l dir (ls ~/Code | fzf)
+  set -l path ~/Code/$dir
   cd $path
   find $path -type f | fzf-preview | xargs nvim
 end
