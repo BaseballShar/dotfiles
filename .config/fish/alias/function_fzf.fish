@@ -58,10 +58,29 @@ function ed
   end
 end
 
+# A useful wrapper for vim w/f fzf integration
+function vi
+  # If no argument, ender fzf select mode
+  if test (count $argv) -eq 0
+    set -f files $(fzf-preview)
+    # Quit if no files are selected
+    if test (count $files) -ne 0
+      vim $files
+    end
+  else
+    vim $argv
+  end
+end
+
 # A useful wrapper for nvim w/f fzf integration
 function nv
+  # If no argument, ender fzf select mode
   if test (count $argv) -eq 0
-    nvim $(fzf-preview)
+    set -f files $(fzf-preview)
+    # Quit if no files are selected
+    if test (count $files) -ne 0
+      nvim $files
+    end
   else
     nvim $argv
   end
