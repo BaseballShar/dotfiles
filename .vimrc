@@ -132,6 +132,9 @@ Plug 'tpope/vim-surround'
 " A simple status line
 Plug 'vim-airline/vim-airline'
 
+" Auto disable search hightlight
+Plug 'romainl/vim-cool'
+
 call plug#end()
 
 colorscheme everforest
@@ -140,7 +143,7 @@ colorscheme everforest
 " Vim-airline
 let g:airline_section_x = ''
 let g:airline_section_y = ''
-let g:airline_section_z = airline#section#create(['%l:%c'])
+let g:airline_section_z = airline#section#create(['%4l:%-3c'])
 
 " Plugin manager
 nnoremap <silent> <Space>pi :PlugInstall<CR>
