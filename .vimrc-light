@@ -2,7 +2,6 @@
 filetype plugin on
 filetype indent on
 syntax on
-" set shell=zsh
 set history=1000
 set termguicolors " Enable 24 bit colors
 set background=dark
@@ -52,6 +51,14 @@ set nofoldenable
 " Buffers
 set autoread " Auto read changed files
 
+" Statusline
+set laststatus=2
+set statusline=\ 
+set statusline+=%4f\ " File name
+set statusline+=%m " Modified
+set statusline+=%= " Push to right
+set statusline+=%l:%-4c " Line number and character
+
 " Center after moving pages
 nnoremap <silent> <C-u> <C-u>zz
 nnoremap <silent> <C-d> <C-d>zz
@@ -65,9 +72,6 @@ inoremap kj <ESC>
 " Quit and save easily
 nnoremap <silent> <Space>q :q<CR>
 nnoremap <silent> <Space>s :w<CR>
-
-" Set leader key to space
-let maplocalleader = " "
 
 " Plugins
 call plug#begin()
