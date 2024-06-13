@@ -403,9 +403,17 @@ nnoremap <space> :!qlmanage -p %f > /dev/null 2>&1<cr>
 " nnoremap A cw
 
 " As above, but without the file extension
-nnoremap I cW<c-a>
+" nnoremap I cW<c-a>
+" nnoremap cc cW<c-u>
+" nnoremap A cW
+
+" Go to start/end of filename
+nnoremap I cw<c-a>
+nnoremap A cw
+" Prefix with c to ignore extension
 nnoremap cc cW<c-u>
-nnoremap A cW
+nnoremap ca cW
+nnoremap ci cW<c-a>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
