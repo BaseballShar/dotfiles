@@ -65,10 +65,10 @@ function vi
     set -f files $(fzf-preview)
     # Quit if no files are selected
     if test (count $files) -ne 0
-      vim $files
+      vim -u ~/.vimrc-light $files
     end
   else
-    vim $argv
+    vim -u ~/.vimrc-light $argv
   end
 end
 
