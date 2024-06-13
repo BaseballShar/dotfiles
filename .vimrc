@@ -96,4 +96,5 @@ colorscheme everforest
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': 'md'}]
 
+vnoremap <Leader>t <Plug>VimwikiToggleListItem
 nnoremap <Leader>t <Plug>VimwikiToggleListItem
