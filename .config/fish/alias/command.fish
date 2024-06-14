@@ -20,6 +20,9 @@ alias fzf-preview 'fzf --preview="bat --color=always {}"'
 abbr -a tiga 'tig --all'
 alias lg='lazygit'
 
+# Other abbr
+abbr -a cl 'clear'
+
 # abbr -a --position anywhere gaa 'git add --all'
 # abbr -a --position anywhere gb 'git branch'
 # abbr -a --position anywhere gba 'git branch --all | less -F'
