@@ -12,6 +12,7 @@ alias md='mkdir -p'
 alias o='open .'
 alias p='pwd'
 alias pp='pwd -P'
+abbr -a ff 'fastfetch'
 
 # fzf settings
 alias fzf-preview 'fzf --preview="bat --color=always {}"'

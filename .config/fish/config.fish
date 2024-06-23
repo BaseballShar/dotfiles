@@ -29,6 +29,7 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border -m'
 
 function fish_greeting
   echo "Welcome back, Fisher Baseball!"
+  fastfetch
 end
 
 # Do not print vim mode on prompt
