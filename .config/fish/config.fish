@@ -11,8 +11,8 @@ source /Users/chanjason/.config/fish/alias/function_util.fish
 export PATH="$HOME/.cargo/bin:/Users/chanjason/.local/bin:$HOME/.ghcup/bin:$PATH"
 
 # Text editors
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='vim'
+export VISUAL='vim'
 export SHELL='/usr/local/bin/fish'
 
 # Env variables

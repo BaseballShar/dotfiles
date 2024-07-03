@@ -15,10 +15,10 @@
 " Mind that due to `filetype * open` below by default the editor won't be used
 " for opening files via l/Enter keys.  Comment that line out to change the
 " behaviour.
-if executable('nvim')
-    set vicmd=nvim
-elseif executable('vim')
+if executable('vim')
     set vicmd=vim
+elseif executable('nvim')
+    set vicmd=nvim
 elseif executable('elvis')
     set vicmd=elvis\ -G\ termcap
 elseif executable('vile')
