@@ -20,7 +20,7 @@ function ytdl
   cd ~/Downloads
   mkdir music
   cd music
-  youtube-dl -f "bestaudio" --continue --no-overwrites --ignore-errors --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" 'https://www.youtube.com/playlist?list=PLN0FTc65cafjUNGRyfsfdBaMW8P0W6qh7'
+  yt-dlp --extract-audio --audio-format mp3 'https://www.youtube.com/playlist?list=PLN0FTc65cafjUNGRyfsfdBaMW8P0W6qh7'
 end
 
 # cd to viewing directory when quitting vifm
