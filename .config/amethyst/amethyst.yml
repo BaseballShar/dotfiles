@@ -1,3 +1,7 @@
+layouts:
+  - fullscreen
+  - two-pane
+
 mod1:
   - option
   - control
