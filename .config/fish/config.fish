@@ -3,6 +3,9 @@ source /Users/chanjason/.config/fish/temp.fish
 source /Users/chanjason/.config/fish/alias/path.fish
 source /Users/chanjason/.config/fish/alias/command.fish
 
+# User defined abbreviations
+source /Users/chanjason/.config/fish/alias/abbr.fish
+
 # User defined functions
 source /Users/chanjason/.config/fish/alias/function_fzf.fish
 source /Users/chanjason/.config/fish/alias/function_util.fish
