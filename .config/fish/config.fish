@@ -1,14 +1,14 @@
 # User defined alias
 source /Users/chanjason/.config/fish/temp.fish
-source /Users/chanjason/.config/fish/alias/path.fish
-source /Users/chanjason/.config/fish/alias/command.fish
+source /Users/chanjason/.config/fish/custom/path.fish
+source /Users/chanjason/.config/fish/custom/command.fish
 
 # User defined abbreviations
-source /Users/chanjason/.config/fish/alias/abbr.fish
+source /Users/chanjason/.config/fish/custom/abbr.fish
 
 # User defined functions
-source /Users/chanjason/.config/fish/alias/function_fzf.fish
-source /Users/chanjason/.config/fish/alias/function_util.fish
+source /Users/chanjason/.config/fish/custom/function_fzf.fish
+source /Users/chanjason/.config/fish/custom/function_util.fish
 
 # Path to rust programs
 export PATH="$HOME/.cargo/bin:/Users/chanjason/.local/bin:$HOME/.ghcup/bin:$PATH"
