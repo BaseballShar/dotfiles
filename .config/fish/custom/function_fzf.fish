@@ -36,7 +36,7 @@ end
 function ed
   switch $argv
   case sh fish shell
-    nvim ~/.config/fish/*.fish ~/.config/fish/alias/*.fish
+    nvim ~/.config/fish/*.fish ~/.config/fish/custom/*.fish
   case nv nvim
     nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua ~/.config/nvim/lua/plugins/*.lua
   case kit kitty
