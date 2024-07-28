@@ -17,10 +17,15 @@ end
 
 # Download music from a secret platform
 function ytdl
-  cd ~/Downloads
-  mkdir music
+  mkdir -p ~/Downloads/music
   cd music
-  yt-dlp --extract-audio --audio-format mp3 'https://www.youtube.com/playlist?list=PLN0FTc65cafjUNGRyfsfdBaMW8P0W6qh7'
+  # If no argument, download the default playlist
+  if test (count $argv) -eq 0
+    yt-dlp --extract-audio --audio-format mp3 'https://www.youtube.com/playlist?list=PLN0FTc65cafjUNGRyfsfdBaMW8P0W6qh7'
+    # Otherwise, download the selected song
+  else
+    yt-dlp --extract-audio --audio-format mp3 $argv[1]
+  end
 end
 
 # cd to viewing directory when quitting vifm
