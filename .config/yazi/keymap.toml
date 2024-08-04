@@ -1,0 +1,16 @@
+[manager]
+
+prepend_keymap = [
+  { on = [
+    "g",
+    "m",
+  ], run = "cd ~/Documents/Music", desc = "Go to the music directory" },
+  { on = [
+    "g",
+    "d",
+  ], run = "cd ~/Desktop", desc = "Go to the desktop" },
+  { on = [
+    "g",
+    "D",
+  ], run = "cd ~/Downloads", desc = "Go to the download directory" },
+]
