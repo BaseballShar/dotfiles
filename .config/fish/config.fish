@@ -1,17 +1,17 @@
 # User defined alias
-source /Users/chanjason/.config/fish/temp.fish
-source /Users/chanjason/.config/fish/custom/path.fish
-source /Users/chanjason/.config/fish/custom/command.fish
+source ~/.config/fish/temp.fish
+source ~/.config/fish/custom/path.fish
+source ~/.config/fish/custom/command.fish
 
 # User defined abbreviations
-source /Users/chanjason/.config/fish/custom/abbr.fish
+source ~/.config/fish/custom/abbr.fish
 
 # User defined functions
-source /Users/chanjason/.config/fish/custom/function_fzf.fish
-source /Users/chanjason/.config/fish/custom/function_util.fish
+source ~/.config/fish/custom/function_fzf.fish
+source ~/.config/fish/custom/function_util.fish
 
 # Path to rust programs
-export PATH="$HOME/.cargo/bin:/Users/chanjason/.local/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="$HOME/.cargo/bin:~/.local/bin:$HOME/.ghcup/bin:$PATH"
 
 # Text editors
 export EDITOR='vim'
