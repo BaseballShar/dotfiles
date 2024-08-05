@@ -43,10 +43,19 @@
 - Install amethyst
 - `brew install --cask amethyst`
 
-# Fish: As login shell
-
 # Kitty
 
+# Fish: As login shell
+-- Delayed: Used zsh for backup
+- Install fisher plugin manager
+- Install these fish plugins
+jorgebucaran/fisher
+patrickf1/fzf.fish
+jorgebucaran/autopair.fish
+jhillyerd/plugin-git
+
 # To be fixed
-- Bad integration: fzf-native and fzf
-- Fish as login shell
+- Bad integration: fzf-native and fzf -> Temp fix: Use fzf to replace
+
+# To be done
+- css colour code plugin issues: Unable to build in fish
