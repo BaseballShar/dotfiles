@@ -46,10 +46,10 @@ abbr -a cl 'clear'
 alias Gst='git status'
 
 # Alias for ls
-alias l='exa -F --sort=type'
-alias ll='exa -lh --time-style=iso --no-user --sort=type'
-alias la='exa -lha --time-style=long-iso --sort=type'
-alias lt='exa -T --sort=type'
+alias l='eza -F --sort=type'
+alias ll='eza -lh --time-style=iso --no-user --sort=type'
+alias la='eza -lha --time-style=long-iso --sort=type'
+alias lt='eza -T --sort=type'
 
 # Alias for programming languages
 alias py='python'
