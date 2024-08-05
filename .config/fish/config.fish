@@ -1,5 +1,4 @@
 # User defined alias
-source ~/.config/fish/temp.fish
 source ~/.config/fish/custom/path.fish
 source ~/.config/fish/custom/command.fish
 
