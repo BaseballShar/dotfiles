@@ -53,6 +53,16 @@
 
 # Kitty
 
-# To be fixed
-- Bad integration: fzf-native and fzf
-- Fish as login shell
+# Fish: As login shell
+-- Delayed: Used zsh for backup
+- Install fisher plugin manager
+- Install these fish plugins
+jorgebucaran/fisher
+patrickf1/fzf.fish
+jorgebucaran/autopair.fish
+jhillyerd/plugin-git
+
+# To be done
+- css colour code plugin issues: Unable to build in fish
+- How to use fish as login shell
+- Maintain a working zsh config
