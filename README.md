@@ -55,4 +55,4 @@
 # GUI Applications
 - Install hyperkey: Exclude shift in capslock
 - Unbind capslock in settings
-- `brew install --cask kitty amethyst hyperkey firefox thor`
+- `brew install --cask kitty amethyst hyperkey firefox thor hiddenbar aldente rectangle`
