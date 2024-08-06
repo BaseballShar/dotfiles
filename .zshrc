@@ -112,6 +112,8 @@ export VISUAL='nvim'
 # ssh-add ~/.ssh/id_rsa
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # Enables vim keybinds in zsh
 bindkey -v
@@ -161,6 +163,7 @@ alias rb='source ~/.zshrc'
 # Alias for other programs
 alias tt='ttyper'
 alias tiga='tig --all'
+alias todo='nvim ~/vimwiki/index.md'
 
 # Useful functions
 # fzf settings
