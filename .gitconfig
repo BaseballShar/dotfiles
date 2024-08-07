@@ -1,6 +1,6 @@
 [user]
-  name = Baseball Shar
-  email = workingcth@gmail.com
+  name = Baseball Chan
+  email = baseball@papabo.hk
 
 [init]
   defaultBranch = main
@@ -25,3 +25,5 @@
 
 [diff]
   colorMoved = default
+[credential]
+	helper = store
