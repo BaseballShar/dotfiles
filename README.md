@@ -28,6 +28,7 @@
 - yazi
 - yt-dlp
 - zoxide
+- tldr
 
 # Dotfiles
 - Install `stow` for managing symlinks
@@ -55,4 +56,4 @@
 # GUI Applications
 - Install hyperkey: Exclude shift in capslock
 - Unbind capslock in settings
-- `brew install --cask kitty amethyst hyperkey firefox thor hiddenbar aldente rectangle`
+- `brew install --cask kitty amethyst hyperkey firefox thor hiddenbar aldente rectangle stats`
