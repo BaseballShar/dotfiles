@@ -114,6 +114,7 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+source ~/.config/zsh/fzf-git.sh
 
 # Enables vim keybinds in zsh
 bindkey -v
