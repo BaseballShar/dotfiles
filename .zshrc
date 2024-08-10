@@ -145,6 +145,7 @@ alias ff='fastfetch'
 
 # Alias for git
 alias lg='lazygit'
+alias gco="_fzf_git_each_ref | xargs git checkout"
 
 # Alias for ls
 alias l='eza -F --sort=type'
