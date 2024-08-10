@@ -18,4 +18,4 @@
 .config/lvim/lazy-lock.json
 
 # brew bundle
-./Brewfile.lock.json
+Brewfile.lock.json
