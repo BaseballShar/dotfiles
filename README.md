@@ -1,40 +1,16 @@
 # Migration guide
 
-# Pre
+# Pre-terminal setup
 - Install iTerm2: As backup terminal
-- Install homebrew
 - Install nerdfont: CodeNewRoman Nerd Font
-- Install languages: node, go
-`brew install node yarn go ghcup`
-
-# Useful command line tools
-- ag
-- bat
-- btop
-- eza
-- fastfetch
-- fd
-- fish
-- fzf
-- gdu
-- git-delta
-- lazygit
-- neovim
-- rg
-- starship
-- stow
-- tig
-- tmux
-- yazi
-- yt-dlp
-- zoxide
-- tldr
+- Install homebrew
+- Install stow via `brew install stow`
 
 # Dotfiles
-- Install `stow` for managing symlinks
 - Clone the dotfiles repo to `~/dotfiles`
 - Run `git clone https://github.com/BaseballShar/dotfiles` in ~
 - Run `stow .` to symlink
+- Run `brew bundle` to install brew packages
 
 # Zsh
 - Use zsh as backup shell and work shell
@@ -49,11 +25,4 @@
 - Install plugins using `:PlugInstall` in vim command mode
 
 # Nvim
-- Currently using 0.10
-- Formatters: `brew install prettier stylua autopep8 taplo`
 - Install config via `git clone https://github.com/BaseballShar/nvim-config`
-
-# GUI Applications
-- Install hyperkey: Exclude shift in capslock
-- Unbind capslock in settings
-- `brew install --cask kitty amethyst hyperkey firefox thor hiddenbar aldente rectangle stats`
