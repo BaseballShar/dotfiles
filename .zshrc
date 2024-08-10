@@ -166,6 +166,8 @@ alias rb='source ~/.zshrc'
 alias tt='ttyper'
 alias tiga='tig --all'
 alias todo='nvim ~/vimwiki/index.md'
+alias ytdl='yt-dlp --extract-audio --audio-format mp3'
+
 
 # Useful functions
 # fzf settings
