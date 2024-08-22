@@ -145,7 +145,7 @@ alias ff='fastfetch'
 
 # Alias for git
 alias lg='lazygit'
-alias gco="_fzf_git_each_ref | xargs git checkout"
+alias gsw="_fzf_git_each_ref | xargs git checkout"
 
 # Alias for ls
 alias l='eza -F --sort=type'
@@ -163,7 +163,6 @@ alias ipy3='ipython3'
 alias rb='source ~/.zshrc'
 
 # Alias for other programs
-alias tt='ttyper'
 alias tiga='tig --all'
 alias todo='nvim ~/vimwiki/index.md'
 alias ytdl='yt-dlp --extract-audio --audio-format mp3'
