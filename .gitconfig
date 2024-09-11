@@ -24,6 +24,10 @@
   main-view-author-display = abbreviated
   main-view-date-local = true
 
+[tig "bind"]
+  main = <Ctrl-f> scroll-page-down
+  main = <Ctrl-b> scroll-page-up
+
 [merge]
   tool = nvimdiff
   conflictstyle = diff3
