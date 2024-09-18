@@ -261,7 +261,15 @@ function fm {
 # Function to select music fuzzily
 function mu {
   local file="$(find ~/Documents/Music -type f | fzf)"
-  open $file
+
+  # Open only if a file is selected
+  if [ -n "$file" ]; then
+    # Kill running instances of IINA, the music player
+    if pgrep -x "IINA" > /dev/null; then
+      killall IINA
+    fi
+    open "$file"
+  fi
 }
 
 # >>> conda initialize >>>
