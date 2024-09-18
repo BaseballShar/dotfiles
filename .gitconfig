@@ -7,24 +7,39 @@
 
 [core]
   pager = delta
-  editor = vim
+  editor = nvim
 
 [interactive]
   diffFilter = delta --color-only
 
 [delta]
   navigate = true    # use n and N to move between diff sections
-  side-by-side = true
+  ; side-by-side = true
 
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
     # light = true
 
+[tig]
+  main-view-author-display = abbreviated
+  main-view-date-local = true
+
+[tig "bind"]
+  main = <Ctrl-f> scroll-page-down
+  main = <Ctrl-b> scroll-page-up
+
 [merge]
+  tool = nvimdiff
   conflictstyle = diff3
+
+[mergetool]
+  keepBackup = false
 
 [diff]
   colorMoved = default
 
 [push]
 	default = current
+
+[pull]
+  rebase = true
