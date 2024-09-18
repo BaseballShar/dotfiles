@@ -258,6 +258,12 @@ function fm {
 	rm -f -- "$tmp"
 }
 
+# Function to select music fuzzily
+function mu {
+  local file="$(find ~/Documents/Music -type f | fzf)"
+  open $file
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -272,4 +278,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
