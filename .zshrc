@@ -158,6 +158,7 @@ alias py='python'
 alias py3='python3'
 alias ipy='ipython'
 alias ipy3='ipython3'
+alias pip='pip3'
 
 # Alias for rebooting zsh shell
 alias rb='source ~/.zshrc'
