@@ -154,11 +154,11 @@ alias la='eza -lha --time-style=long-iso --sort=type'
 alias lt='eza -T --sort=type'
 
 # Alias for programming languages
-alias py='python'
+# python3 is managed by apple
 alias py3='python3'
+# python is managed by conda
+alias py='python'
 alias ipy='ipython'
-alias ipy3='ipython3'
-alias pip='pip3'
 
 # Alias for rebooting zsh shell
 alias rb='source ~/.zshrc'
