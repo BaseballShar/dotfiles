@@ -169,6 +169,10 @@ alias todo='nvim ~/vimwiki/index.md'
 alias ytdl='yt-dlp --extract-audio --audio-format mp3'
 
 
+# Alias that I am too lazy to categorise
+alias npml='npm install --legacy-peer-deps'
+alias ys='yarn start'
+
 # Useful functions
 # fzf settings
 function fzf-preview {

@@ -1,3 +1,6 @@
+# Configuration option documentation site
+# https://github.com/ianyh/Amethyst/blob/development/docs/configuration-files.md
+
 layouts:
   - fullscreen
   - two-pane
@@ -21,3 +24,7 @@ select-tall-layout:
 select-wide-layout:
   mod: mod2
   key: s
+
+display-current-layout:
+  mod: mod2
+  key: i
