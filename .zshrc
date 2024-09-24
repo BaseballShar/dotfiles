@@ -142,6 +142,7 @@ alias o='open .'
 alias p='pwd'
 alias pp='pwd -P'
 alias ff='fastfetch'
+alias s='kitten ssh'
 
 # Alias for git
 alias lg='lazygit'
