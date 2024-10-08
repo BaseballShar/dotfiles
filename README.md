@@ -26,3 +26,16 @@
 
 # Nvim
 - Install config via `git clone https://github.com/BaseballShar/nvim-config`
+
+# Linux Server
+## Debian (Bash)
+- Clone dotfiles `git clone https://github.com/BaseballShar/dotfiles` in ~
+- Install vim plug `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+- Install OMB `bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"`
+- Run `sudo apt install stow`
+- Run `stow .` and resolve existing symlink conflicts
+- Install go `sudo apt install golang`
+- Install rust `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- [Pending] Include common packages for installation as a script
+- [Pending] Create a bashrc with aliases
