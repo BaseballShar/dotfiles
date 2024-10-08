@@ -131,6 +131,7 @@ bindkey -v
 # fzf settings
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border -m'
 
+
 # Alias and functions
 # Alias for modern linux commands
 alias b='btop'
@@ -173,6 +174,7 @@ alias ytdl='yt-dlp --extract-audio --audio-format mp3'
 # Alias that I am too lazy to categorise
 alias npml='npm install --legacy-peer-deps'
 alias ys='yarn start'
+alias yd='yarn dev'
 
 # Useful functions
 # fzf settings
