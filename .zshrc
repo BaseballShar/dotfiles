@@ -279,6 +279,13 @@ function mu {
   fi
 }
 
+# Crop the initial gap of mp3 files
+function crop {
+  local file=$1
+  local dur=$2
+  ffmpeg -i $file -ss $dur -acodec copy output.mp3
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
