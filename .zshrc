@@ -131,7 +131,6 @@ bindkey -v
 # fzf settings
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border -m'
 
-
 # Alias and functions
 # Alias for modern linux commands
 alias b='btop'
@@ -169,7 +168,6 @@ alias rb='source ~/.zshrc'
 alias tiga='tig --all'
 alias todo='nvim ~/vimwiki/index.md'
 alias ytdl='yt-dlp --extract-audio --audio-format mp3'
-
 
 # Alias that I am too lazy to categorise
 alias npml='npm install --legacy-peer-deps'
@@ -215,9 +213,16 @@ function vi {
 
 # A useful wrapper for nvim with fzf integration
 function nv {
+  # nv invoked with no arguments
   if [[ $# -eq 0 ]]; then
-    local files=$(fzf-preview)
-    [[ -n "$files" ]] && nvim $files
+    fzf-preview | xargs nvim
+    # Search from the parent directory
+  elif [[ "$1" == "2" ]]; then
+    fd -H . ../ | fzf-preview | xargs nvim
+    # Search from the grandparent directory
+  elif [[ "$1" == "3" ]]; then
+    fd -H . ../../ | fzf-preview | xargs nvim
+    # otherwise open nvim with the selected files
   else
     nvim "$@"
   fi
