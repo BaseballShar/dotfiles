@@ -4,8 +4,10 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Path to rust programs
-export PATH="$HOME/.cargo/bin:~/.local/bin:$PATH"
+# Path to rust and go programs
+export PATH="$HOME/.cargo/bin:~/.local/bin:$HOME/go/bin:$PATH"
+
+[ -f "/Users/baseball/.ghcup/env" ] && . "/Users/baseball/.ghcup/env" # ghcup-env
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -230,6 +232,7 @@ function nv {
 
 # A convenient wrapper for tmux
 function tm {
+  # When ran without arguments, attach to the most recent session or create one if none exists
   if [[ $# -eq 0 ]]; then
     if tmux ls >/dev/null 2>&1; then
       tmux attach
@@ -240,12 +243,14 @@ function tm {
     case "$1" in
       h|help)
         echo "tm: A convenient wrapper for tmux"
-        echo "Usage: tm [l|k|ka|*]"
+        echo "Usage: tm [c|l|k|ka|*]"
+        echo "c: Connect to any created session via fuzzy search"
         echo "l: List all tmux sessions"
         echo "k: Kill session by name"
         echo "ka: Kill all sessions"
         echo "*: Spawn or join a new session with name"
         ;;
+      c) tmux attach -t $(tmux ls | sed 's/:.*//g' | fzf) ;;
       l|ls) tmux ls ;;
       k|kill) tmux kill-session -t "$2" ;;
       ka|killall) tmux kill-server ;;
@@ -305,3 +310,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
