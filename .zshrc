@@ -175,6 +175,50 @@ function nv {
   fi
 }
 
+function tmux-quantum-switch {
+  # Search through tmux sessions and project directories to connect
+  local sessions=$(tmux ls | sed 's/:.*//g')
+  local work_dir=$(find ~/projects ~/documents ~/dotfiles -mindepth 1 -maxdepth 2 -type d)
+  local selected=$(echo -e "${sessions}\n${work_dir}" | fzf)
+
+  # If none selected, exit function
+  if [[ -z $selected ]]; then
+    zle reset-prompt
+    return 0
+  fi
+
+  local selected_name=$(basename "$selected" | tr . _)
+  local tmux_running=$(pgrep tmux)
+
+  # If tmux is not running, just create session and leave
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    return 0
+  fi
+
+  # If the session name does not exist, create a new session
+  if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+  fi
+
+  if [[ -z $TMUX ]]; then
+    tmux attach -t $selected_name
+  else
+    tmux switch-client -t $selected_name
+  fi
+
+  zle reset-prompt
+}
+zle -N tmux-quantum-switch
+bindkey '^T' tmux-quantum-switch
+
+function quantum-teleport {
+  __zoxide_zi
+  zle reset-prompt
+}
+zle -N quantum-teleport
+bindkey '^A' quantum-teleport
+
 # A convenient wrapper for tmux
 function tm {
   # When ran without arguments, attach to the most recent session or create one if none exists
@@ -211,14 +255,17 @@ function tm {
 }
 
 # Function to change directory based on yazi
-function fm {
+function file-telescope {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+  zle reset-prompt
 }
+zle -N file-telescope
+bindkey '^F' file-telescope
 
 # Function to select music fuzzily
 function mu {
