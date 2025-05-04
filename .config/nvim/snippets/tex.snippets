@@ -1,0 +1,237 @@
+# Preable templates
+snippet tproof
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{nopageno}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage[indent=0pt]{parskip}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+\begin{landscape}
+\title{${1:title}}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+\end{landscape}
+\end{document}
+
+snippet tasm
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage[indent=0pt]{parskip}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+\title{${1:title}}
+\author{Chan Tsz Ho\\\\UID: 3035785738}
+\date{}
+\maketitle
+
+\end{document}
+
+snippet talgo
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[indent=0pt]{parskip}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+\title{${1:title}}
+\author{Chan Tsz Ho\\\\UID: 3035785738}
+\date{}
+\maketitle
+
+\lstset{language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{brown},
+  stringstyle=\color{olive},
+  emph={function, append, sort, by, length, to, algorithm, Input, right, of},
+  emphstyle=\color{blue},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+\begin{lstlisting}
+	This is some code
+\end{lstlisting}
+
+\end{document}
+
+snippet tnote
+\documentclass[a4paper,twocolumn,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[indent=0pt]{parskip}
+
+% \newcommand{alias}[arg_num]{#1#2...}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cv}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}}
+\newcommand{\rv}[2]{\begin{bmatrix}#1&#2\end{bmatrix}}
+% \newtheorem{env_name}{displayed_name}[parent_counter]
+\theoremstyle{definition}
+\newtheorem{fact}{Fact}[section]
+
+\lstset{language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{brown},
+  stringstyle=\color{olive},
+  emph={function, append, sort, by, length, to, algorithm, Input, right, of},
+  emphstyle=\color{blue},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+\begin{document}
+\title{${1:title}}
+\date{}
+\maketitle
+
+${2:content}
+
+\end{document}
+
+# Environment snippets
+snippet sec
+\section{${1:name}}
+
+snippet ssec
+\subsection{${1:name}}
+
+snippet begin
+\begin{${1:env}}
+\end{${1:env}}
+
+snippet table
+\begin{tabular}{${1:|c|c|}}
+	${2:content}
+\end{tabular}
+
+snippet fig
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=${1:0.5}\textwidth]{${2:figure}}
+	\caption{${3:caption}}
+	\label{fig:${4:label}}
+\end{figure}
+
+# Math formatting snippets
+snippet eqn
+$${1:content}$$2
+
+snippet Eqn
+\begin{equation*}
+	${1:content}
+\end{equation*}
+
+snippet align
+\begin{align*}
+	${1:content}
+\end{align*}
+
+snippet frac
+\frac{$1}{$2}$3
+
+snippet sum
+\sum_{${1:sub}}^{${2:sup}} ${3:expr}$4
+
+snippet prod
+\prod_{${1:sub}}^{${2:sup}} ${3:expr}$4
+
+snippet vec
+\vec{$1}$2
+
+snippet hat
+\hat{$1}$2
+
+# Greek letters
+snippet alp
+\alpha
+
+snippet bet
+\beta
+
+snippet gam
+\gamma
+
+snippet del
+\delta
+
+snippet eps
+\epsilon
+
+snippet the
+\theta
+
+snippet lam
+\lambda
+
+snippet pi
+\pi
+
+# Formatting snippets
+snippet bf
+\textbf{$1}
+
+snippet it
+\textit{$1}
+
+snippet un
+\underline{$1}
+
+snippet text
+\text{$1}
