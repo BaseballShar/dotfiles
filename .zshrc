@@ -219,6 +219,12 @@ function quantum-teleport {
 zle -N quantum-teleport
 bindkey '^A' quantum-teleport
 
+function git-manipulator {
+  lazygit
+}
+zle -N git-manipulator
+bindkey '^Q' git-manipulator
+
 # A convenient wrapper for tmux
 function tm {
   # When ran without arguments, attach to the most recent session or create one if none exists
