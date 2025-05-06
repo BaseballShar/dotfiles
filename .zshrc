@@ -273,6 +273,14 @@ function file-telescope {
 zle -N file-telescope
 bindkey '^F' file-telescope
 
+function incubate-stupidity {
+  local model=$(ollama list | sed '1d' | awk '{print $1}' | fzf)
+  if [[ -n $model ]]; then
+    ollama run $model
+  fi
+}
+bindkey -s '^O' 'incubate-stupidity\n'
+
 # Function to select music fuzzily
 function mu {
   local file="$(find ~/Documents/Music -type f | fzf)"
