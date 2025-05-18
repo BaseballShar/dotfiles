@@ -302,6 +302,10 @@ function getip {
   echo "Private IP: $privateIP"
 }
 
+function getweather {
+  curl -s 'wttr.in?format=%c+T:%t+H:%h+R:%p+W:%w+UV:%u+M:%m\n'
+}
+
 # Crop the initial gap of mp3 files
 function crop {
   local file=$1

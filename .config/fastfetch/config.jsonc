@@ -46,7 +46,7 @@
       "showIpv6": true,
       "showPrefixLen": false
     },
-    // "battery",
+    "battery",
     // "poweradapter",
     // "locale",
     "media",
