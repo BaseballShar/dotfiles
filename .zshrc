@@ -295,11 +295,19 @@ function mu {
   fi
 }
 
+function getip {
+  local publicIP=$(curl -s ifconfig.me)
+  local privateIP=$(ifconfig | grep 'inet ' | awk '{print $2}' | tail -n +2)
+  echo "Public IP: $publicIP"
+  echo "Private IP: $privateIP"
+}
+
 # Crop the initial gap of mp3 files
 function crop {
   local file=$1
-  local dur=$2
-  ffmpeg -i $file -ss $dur -acodec copy output.mp3
+  local start=$2
+  local finish=$3
+  ffmpeg -i $file -ss $start -to $finish -acodec copy output.mp3
 }
 
 # >>> conda initialize >>>
