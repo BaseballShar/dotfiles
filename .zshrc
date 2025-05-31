@@ -87,7 +87,8 @@ bindkey -v
 
 # Aliases
 alias gdu='gdu-go'
-alias o='open .'
+alias o='open'
+alias oo='open .'
 alias p='pwd -P'
 alias ff='fastfetch'
 
