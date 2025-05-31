@@ -16,6 +16,8 @@ mod2:
   - command
   - shift
 
+screen-padding-top: 40
+
 # Prevent conflict with open Kitty terminal
 select-tall-layout:
   mod: mod2
