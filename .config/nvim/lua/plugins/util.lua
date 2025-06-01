@@ -80,12 +80,12 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "^2",
-    keys = "<A-1>",
+    keys = "<A-q>",
     config = function()
       require("toggleterm").setup({
         size = 15,
         direction = "float",
-        open_mapping = [[<A-1>]],
+        open_mapping = [[<A-q>]],
       })
     end,
   },
