@@ -68,6 +68,11 @@ colored_box=(
   background.height=30
   icon.padding_left=15
   label.padding_right=15
+  popup.background.border_width=2
+  popup.background.corner_radius=3
+  popup.background.border_color=0xff9dd274
+  popup.background.drawing=on
+  popup.background.color=0xff494d64
 )
 
 ##### Adding Left Items #####
@@ -100,9 +105,15 @@ clock=(
   icon=󰃰
   icon.color=0xffec8a97
   script="$PLUGIN_DIR/clock.sh"
+  popup.align=right
 )
 sketchybar --add item clock right \
-           --set clock "${clock[@]}" "${colored_box[@]}"
+           --set clock "${clock[@]}" "${colored_box[@]}" \
+           --subscribe clock mouse.entered mouse.exited
+
+for rid in {1..6}; do
+  sketchybar --add item clock.$rid popup.clock
+done
 
 volume=(
   icon.color=0xff0ba1bf
@@ -124,13 +135,14 @@ sketchybar --add item battery right \
 weather=(
   update_freq=60
   script="$PLUGIN_DIR/weather.sh"
-  label.padding_left=0
-  label.padding_right=0
-  icon.padding_left=0
-  icon.padding_right=0
+  popup.align=right
 )
 sketchybar --add item weather right \
-           --set weather "${weather[@]}" "${colored_box[@]}"
+           --set weather "${weather[@]}" "${colored_box[@]}" \
+           --add item weather.humidity popup.weather \
+           --add item weather.rain popup.weather \
+           --add item weather.uv popup.weather \
+           --subscribe weather mouse.entered mouse.exited
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
