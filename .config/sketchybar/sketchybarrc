@@ -7,6 +7,18 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 FONT="Hasklug Nerd Font"
 ICON_FONT="sketchybar-app-font"
 
+# Colors
+BG_COLOR=0xff232538
+BAR_COLOR=0x66494d64
+ICON_DEFAULT=0xffffffff
+LABEL_DEFAULT=0xffffffff
+BOX_BG=0xff232538
+POPUP_BORDER=0xff9dd274
+POPUP_BG=0xff494d64
+BATT_ICON=0xffd3e607
+VOLUME_ICON=0xff0ba1bf
+CLOCK_ICON=0xffec8a97
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
 # These are only some of the options available. For all options see:
@@ -18,7 +30,7 @@ bar=(
   position=top
   height=40
   blur_radius=30
-  color=0x66494d64 # argb
+  color=$BAR_COLOR # argb
 )
 sketchybar --bar "${bar[@]}"
 
@@ -32,8 +44,8 @@ default=(
   padding_right=5
   icon.font="$FONT:Regular:20.0"
   label.font="$FONT:Bold:18.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  icon.color=$ICON_DEFAULT
+  label.color=$LABEL_DEFAULT
   icon.padding_left=5
   icon.padding_right=5
   label.padding_left=5
@@ -48,14 +60,16 @@ for sid in $(aerospace list-workspaces --all); do
   sketchybar --add item space.$sid left \
     --subscribe space.$sid aerospace_workspace_change \
     --set space.$sid \
-    background.color=0x44ffffff \
+    background.color=$BG_COLOR \
     background.corner_radius=5 \
-    background.height=20 \
+    background.height=30 \
     background.drawing=off \
-    label.padding_left=0 \
-    label.padding_right=5 \
-    icon.padding_left=5 \
+    label.padding_left=10 \
+    label.padding_right=10 \
+    icon.padding_left=0 \
     icon.padding_right=0 \
+    padding_left=0 \
+    padding_right=0 \
     label="$sid" \
     click_script="aerospace workspace $sid" \
     script="$CONFIG_DIR/plugins/aerospace.sh $sid"
@@ -63,16 +77,16 @@ done
 
 
 colored_box=(
-  background.color=0xff232538
+  background.color=$BOX_BG
   background.corner_radius=5
   background.height=30
   icon.padding_left=15
   label.padding_right=15
   popup.background.border_width=2
   popup.background.corner_radius=3
-  popup.background.border_color=0xff9dd274
+  popup.background.border_color=$POPUP_BORDER
   popup.background.drawing=on
-  popup.background.color=0xff494d64
+  popup.background.color=$POPUP_BG
 )
 
 ##### Adding Left Items #####
@@ -103,8 +117,9 @@ sketchybar --add item chevron left \
 clock=(
   update_freq=10
   icon=󰃰
-  icon.color=0xffec8a97
+  icon.color=$CLOCK_ICON
   script="$PLUGIN_DIR/clock.sh"
+  click_script="open -a Calendar.app"
   popup.align=right
 )
 sketchybar --add item clock right \
@@ -116,7 +131,7 @@ for rid in {1..6}; do
 done
 
 volume=(
-  icon.color=0xff0ba1bf
+  icon.color=$VOLUME_ICON
   script="$PLUGIN_DIR/volume.sh"
 )
 sketchybar --add item volume right \
@@ -125,7 +140,7 @@ sketchybar --add item volume right \
 
 battery=(
   update_freq=60
-  icon.color=0xffd3e607
+  icon.color=$BATT_ICON
   script="$PLUGIN_DIR/battery.sh"
 )
 sketchybar --add item battery right \
