@@ -39,3 +39,5 @@ vim.opt.clipboard:append("unnamed")
 -- Folding
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
+
+vim.diagnostic.config({ virtual_text = { current_line = true } })

@@ -1,5 +1,6 @@
 local keymap = vim.keymap.set
 local lsp_servers = {
+  "bashls",
   "cssls",
   "emmet_language_server",
   "gopls",
@@ -94,11 +95,16 @@ return {
     version = "^1",
     config = function()
       local lspconfig = require("lspconfig")
+      -- default binding
       for _, server in ipairs(lsp_servers) do
         lspconfig[server].setup({})
       end
 
-      -- Setup swift lsp server
+      -- additional configs
+      lspconfig.bashls.setup({
+        filetypes = { "sh", "bash", "zsh" },
+      })
+
       lspconfig.sourcekit.setup({
         capabilities = {
           workspace = {
@@ -120,6 +126,13 @@ return {
       keymap("n", "<Leader>rn", vim.lsp.buf.rename)
       keymap("n", "<Leader>ca", vim.lsp.buf.code_action)
       keymap("n", "<Leader>ts", builtin.treesitter)
+      keymap("i", "<A-s>", vim.lsp.buf.signature_help)
+
+      -- Disable builtin lsp mapping conflicting with goto refs
+      vim.keymap.del("n", "grr")
+      vim.keymap.del("n", "gra")
+      vim.keymap.del("n", "gri")
+      vim.keymap.del("n", "grn")
 
       -- Diagonstics
       keymap("n", "]d", vim.diagnostic.goto_next)
