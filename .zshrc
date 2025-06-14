@@ -111,7 +111,7 @@ alias py='python'
 alias ipy='ipython'
 
 # Nothing a restart can't fix!
-alias rb='source ~/.zshrc'
+alias rb='unalias -a && source ~/.zshrc'
 
 # Javascript madness
 alias npml='npm install --legacy-peer-deps'
@@ -313,6 +313,48 @@ function crop {
   local start=$2
   local finish=$3
   ffmpeg -i $file -ss $start -to $finish -acodec copy output.mp3
+}
+
+function timer {
+  local ts=(
+    5m
+    15m
+    30m
+    45m
+    60m
+  )
+  local msgs=(
+    "You shall rest now"
+    "Time to drink water"
+    "Take a brief walk"
+    "Get up and sleep"
+    "It is green time"
+  )
+  local t=$(printf "%s\n" "${ts[@]}"| fzf)
+  local msg=$msgs[$(($RANDOM % $#msgs + 1))]
+  # Selectable countdown with random stop messages
+  termdown $t && say $msg
+}
+
+function yt {
+  case "$1" in
+    l|list)
+      for url in $YT_LIST
+      do
+        echo $url
+      done ;;
+    a|add) YT_LIST+=($2); export YT_LIST ;;
+    d|download)
+      for url in $YT_LIST
+      do
+        echo "Downloading: $url"
+        yt-dlp --extract-audio --audio-format mp3 $url
+      done
+      export YT_LIST=() ;;
+    r|remove) export YT_LIST=() ;;
+    *) yt l ;;
+  esac
+
 }
 
 # >>> conda initialize >>>
