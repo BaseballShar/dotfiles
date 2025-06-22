@@ -96,6 +96,7 @@ alias ff='fastfetch'
 alias lg='lazygit'
 alias gsw="_fzf_git_each_ref | xargs git checkout"
 alias tiga='tig --all'
+alias nm='neomutt'
 
 # List all visibles within two strokes
 alias l='eza -F --sort=type'

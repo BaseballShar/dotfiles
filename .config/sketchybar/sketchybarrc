@@ -150,6 +150,7 @@ sketchybar --add item battery right \
 weather=(
   update_freq=60
   script="$PLUGIN_DIR/weather.sh"
+  click_script="open -a Weather.app"
   popup.align=right
 )
 sketchybar --add item weather right \
