@@ -71,22 +71,16 @@ return {
   {
     "williamboman/mason.nvim",
     version = "^1",
-    event = "VeryLazy",
-    config = function()
-      require("mason").setup()
-      keymap("n", "<Leader>m", "<Cmd>Mason<CR>")
-    end,
+    opts = {},
   },
 
   -- Mason lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
     version = "^1",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = lsp_servers,
-      })
-    end,
+    opts = {
+      ensure_installed = lsp_servers,
+    },
   },
 
   -- nvim lspconfig
@@ -118,9 +112,12 @@ return {
       local builtin = require("telescope.builtin")
       keymap("n", "<Leader>k", ":LspInfo<CR>")
       keymap("n", "K", vim.lsp.buf.hover)
-      keymap("n", "gd", builtin.lsp_definitions)
-      keymap("n", "gr", builtin.lsp_references)
-      keymap("n", "gi", builtin.lsp_implementations)
+      keymap("n", "gd", vim.lsp.buf.definition)
+      keymap("n", "gr", vim.lsp.buf.references)
+      keymap("n", "gi", vim.lsp.buf.implementation)
+      -- keymap("n", "gd", builtin.lsp_definitions)
+      -- keymap("n", "gr", builtin.lsp_references)
+      -- keymap("n", "gi", builtin.lsp_implementations)
       keymap("n", "<Leader>ds", builtin.lsp_document_symbols)
       keymap("n", "<Leader>ws", builtin.lsp_dynamic_workspace_symbols)
       keymap("n", "<Leader>rn", vim.lsp.buf.rename)

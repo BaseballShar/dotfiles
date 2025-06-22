@@ -20,6 +20,8 @@ return {
         typst = { "typstyle" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
       },
       range = { conform.Range },
       -- Auto format on save

@@ -18,7 +18,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -132,21 +132,21 @@ function fzf-preview {
 # Editing configs is easier than ever
 function ed {
   case "$1" in
-    sh|fish|shell) nvim ~/.config/fish/*.fish ~/.config/fish/custom/*.fish ;;
-    nv|nvim) nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua ~/.config/nvim/lua/plugins/*.lua ;;
-    kit|kitty) nvim ~/.config/kitty/kitty.conf ;;
-    vm|vifm) nvim ~/.config/vifm/vifmrc ;;
-    tm|tmux) nvim ~/.tmux.conf ;;
-    h|help)
-      echo "ed: Shortcut for editing configs"
-      echo "Usage: ed [sh|nv|kit|vm]"
-      echo "No argument: Fuzzy search all configs"
-      echo "sh: Edit shell config"
-      echo "nv: Edit nvim config"
-      echo "kit: Edit kitty config"
-      echo "vm: Edit vifm config"
-      ;;
-    *) find ~/dotfiles -type f | fzf-preview -m | xargs nvim ;;
+  sh | fish | shell) nvim ~/.config/fish/*.fish ~/.config/fish/custom/*.fish ;;
+  nv | nvim) nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua ~/.config/nvim/lua/plugins/*.lua ;;
+  kit | kitty) nvim ~/.config/kitty/kitty.conf ;;
+  vm | vifm) nvim ~/.config/vifm/vifmrc ;;
+  tm | tmux) nvim ~/.tmux.conf ;;
+  h | help)
+    echo "ed: Shortcut for editing configs"
+    echo "Usage: ed [sh|nv|kit|vm]"
+    echo "No argument: Fuzzy search all configs"
+    echo "sh: Edit shell config"
+    echo "nv: Edit nvim config"
+    echo "kit: Edit kitty config"
+    echo "vm: Edit vifm config"
+    ;;
+  *) find ~/dotfiles -type f | fzf-preview -m | xargs nvim ;;
   esac
 }
 
@@ -199,7 +199,7 @@ function tmux-quantum-switch {
   fi
 
   # If the session name does not exist, create a new session
-  if ! tmux has-session -t=$selected_name 2> /dev/null; then
+  if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
   fi
 
@@ -238,38 +238,38 @@ function tm {
     fi
   else
     case "$1" in
-      h|help)
-        echo "tm: A convenient wrapper for tmux"
-        echo "Usage: tm [c|l|k|ka|*]"
-        echo "c: Connect to any created session via fuzzy search"
-        echo "l: List all tmux sessions"
-        echo "k: Kill session by name"
-        echo "ka: Kill all sessions"
-        echo "*: Spawn or join a new session with name"
-        ;;
-      c) tmux attach -t $(tmux ls | sed 's/:.*//g' | fzf) ;;
-      l|ls) tmux ls ;;
-      k|kill) tmux kill-session -t "$2" ;;
-      ka|killall) tmux kill-server ;;
-      *) 
-        if tmux has-session -t "$1" >/dev/null 2>&1; then
-          tmux attach -t "$1"
-        else
-          tmux new -s "$1"
-        fi
-        ;;
+    h | help)
+      echo "tm: A convenient wrapper for tmux"
+      echo "Usage: tm [c|l|k|ka|*]"
+      echo "c: Connect to any created session via fuzzy search"
+      echo "l: List all tmux sessions"
+      echo "k: Kill session by name"
+      echo "ka: Kill all sessions"
+      echo "*: Spawn or join a new session with name"
+      ;;
+    c) tmux attach -t $(tmux ls | sed 's/:.*//g' | fzf) ;;
+    l | ls) tmux ls ;;
+    k | kill) tmux kill-session -t "$2" ;;
+    ka | killall) tmux kill-server ;;
+    *)
+      if tmux has-session -t "$1" >/dev/null 2>&1; then
+        tmux attach -t "$1"
+      else
+        tmux new -s "$1"
+      fi
+      ;;
     esac
   fi
 }
 
 # Function to change directory based on yazi
 function file-telescope {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
   zle reset-prompt
 }
 zle -N file-telescope
@@ -290,7 +290,7 @@ function mu {
   # Open only if a file is selected
   if [ -n "$file" ]; then
     # Kill running instances of IINA, the music player
-    if pgrep -x "IINA" > /dev/null; then
+    if pgrep -x "IINA" >/dev/null; then
       killall IINA
     fi
     open "$file"
@@ -331,7 +331,7 @@ function timer {
     "Get up and sleep"
     "It is green time"
   )
-  local t=$(printf "%s\n" "${ts[@]}"| fzf)
+  local t=$(printf "%s\n" "${ts[@]}" | fzf)
   local msg=$msgs[$(($RANDOM % $#msgs + 1))]
   # Selectable countdown with random stop messages
   termdown $t && say $msg
@@ -339,36 +339,39 @@ function timer {
 
 function yt {
   case "$1" in
-    l|list)
-      for url in $YT_LIST
-      do
-        echo $url
-      done ;;
-    a|add) YT_LIST+=($2); export YT_LIST ;;
-    d|download)
-      for url in $YT_LIST
-      do
-        echo "Downloading: $url"
-        yt-dlp --extract-audio --audio-format mp3 $url
-      done
-      export YT_LIST=() ;;
-    r|remove) export YT_LIST=() ;;
-    *) yt l ;;
+  l | list)
+    for url in $YT_LIST; do
+      echo $url
+    done
+    ;;
+  a | add)
+    YT_LIST+=($2)
+    export YT_LIST
+    ;;
+  d | download)
+    for url in $YT_LIST; do
+      echo "Downloading: $url"
+      yt-dlp --extract-audio --audio-format mp3 $url
+    done
+    export YT_LIST=()
+    ;;
+  r | remove) export YT_LIST=() ;;
+  *) yt l ;;
   esac
 
 }
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
+  if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/opt/anaconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/opt/anaconda3/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
