@@ -20,6 +20,7 @@ return {
         typst = { "typstyle" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
+        sh = { "shfmt" },
         bash = { "shfmt" },
         zsh = { "shfmt" },
       },
