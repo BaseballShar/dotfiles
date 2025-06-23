@@ -42,7 +42,13 @@ echo ""
 # symlink dotfiles
 echo "Begin symlinking dotfiles"
 # backup zsh config
-mv ~/.zshrc ~/.zshrc.bak
+if [[ -f ~/.zshrc ]]; then
+  mv ~/.zshrc ~/.zshrc.bak
+fi
 cd ~/dotfiles
 stow .
 echo "End of installation script"
+
+# start services
+brew services start sketchybar
+brew services start svim

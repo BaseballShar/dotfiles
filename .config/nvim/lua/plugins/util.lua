@@ -102,16 +102,6 @@ return {
     end,
   },
 
-  -- Show hex code as colours
-  {
-    "rrethy/vim-hexokinase",
-    build = "make hexokinase",
-    init = function()
-      vim.g.Hexokinase_highlighters = { "virtual" }
-      vim.g.Hexokinase_optInPatterns = { "full_hex" }
-    end,
-  },
-
   -- Repeat everything
   "tpope/vim-repeat",
 
