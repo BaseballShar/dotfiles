@@ -1,3 +1,20 @@
+echo "Checking Homebrew"
+if which brew >/dev/null; then
+  echo "Homebrew is installed"
+else
+  echo "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # setting homebrew in path
+  echo >>~/.zprofile
+  echo 'eval "$(/usr/local/bin/brew shellenv)"' >>~/.zprofile
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+echo ""
+
+echo "Installing Brew Package"
+brew bundle
+echo ""
+
 echo "Checking Oh-My-Zsh"
 if [[ -e ~/.oh-my-zsh ]]; then
   echo "Oh-My-Zsh is installed"
@@ -20,19 +37,6 @@ for plugin in ${OMZ_PLUGINS[@]}; do
     git clone https://github.com/zsh-users/$plugin ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/$plugin
   fi
 done
-echo ""
-
-echo "Checking Homebrew"
-if which brew >/dev/null; then
-  echo "Homebrew is installed"
-else
-  echo "Installing Homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-echo ""
-
-echo "Installing Brew Package"
-brew bundle
 echo ""
 
 # symlink dotfiles
