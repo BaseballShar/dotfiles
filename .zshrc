@@ -4,6 +4,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Path to rust and go programs
 export PATH="$HOME/.cargo/bin:~/.local/bin:$HOME/go/bin:$PATH"
 
+# If you need to have ruby first in your PATH, run:
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
 [ -f "/Users/baseball/.ghcup/env" ] && . "/Users/baseball/.ghcup/env" # ghcup-env
 
 # Set name of the theme to load
