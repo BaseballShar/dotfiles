@@ -1,5 +1,5 @@
 return {
-  -- Colorscheme
+  -- Colorschemes
   {
     "sainnhe/everforest",
     lazy = false,
@@ -20,4 +20,21 @@ return {
   "navarasu/onedark.nvim",
   "rebelot/kanagawa.nvim",
   "sainnhe/gruvbox-material",
+
+  -- A Nice and highly customisible statusline for vim
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      sections = {
+        lualine_b = { "filename" },
+        lualine_c = {},
+        lualine_x = { "diagnostics" },
+        lualine_y = { "diff", "branch" },
+        lualine_z = { "location" },
+      },
+      options = {
+        component_separators = "",
+      },
+    },
+  },
 }
