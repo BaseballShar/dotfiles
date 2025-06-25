@@ -15,56 +15,6 @@ local lsp_servers = {
 }
 
 return {
-  -- Comments all the way
-  {
-    "numToStr/Comment.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("Comment").setup({
-        pre_hook = require(
-          "ts_context_commentstring.integrations.comment_nvim"
-        ).create_pre_hook(),
-      })
-    end,
-  },
-
-  -- Comments in jsx
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "VeryLazy",
-    config = function()
-      require("ts_context_commentstring").setup()
-    end,
-  },
-
-  -- Treesitter oxygenates your language parsers
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      -- Huge and colourful tree!
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "c",
-          "cpp",
-          "haskell",
-          "html",
-          "java",
-          "javascript",
-          "lua",
-          "python",
-          "typescript",
-          "vim",
-        },
-        -- Avoid conflicts with vimtex
-        ignore_install = { "latex" },
-        auto_install = true,
-        highlight = { enable = true, additional_vim_regex_highlighting = false },
-        indent = { enable = true },
-      })
-    end,
-  },
-
   -- Mason the medieval lsp gather
   {
     "williamboman/mason.nvim",
@@ -200,4 +150,73 @@ return {
     end,
   },
   "saadparwaiz1/cmp_luasnip",
+
+  -- Comments all the way
+  {
+    "numToStr/Comment.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("Comment").setup({
+        pre_hook = require(
+          "ts_context_commentstring.integrations.comment_nvim"
+        ).create_pre_hook(),
+      })
+    end,
+  },
+
+  -- Comments in jsx
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "VeryLazy",
+    config = function()
+      require("ts_context_commentstring").setup()
+    end,
+  },
+
+  -- Treesitter oxygenates your language parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      -- Huge and colourful tree!
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "html",
+          "javascript",
+          "lua",
+          "python",
+          "typescript",
+          "vim",
+        },
+        -- Avoid conflicts with vimtex
+        ignore_install = { "latex" },
+        auto_install = true,
+        highlight = { enable = true, additional_vim_regex_highlighting = false },
+        indent = { enable = true },
+      })
+    end,
+  },
+
+  -- Treesitter textobjects
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+            },
+          },
+        },
+        matchup = {
+          enable = true,
+        },
+      })
+    end,
+  },
 }
