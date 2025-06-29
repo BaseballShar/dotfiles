@@ -1,4 +1,4 @@
 require("options")
 require("keymaps")
-require("master")
+require("plugin")
 require("util")

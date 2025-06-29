@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 vim.opt.history = 1000
 vim.opt.termguicolors = true -- Enable 24 bit colors
 vim.opt.timeoutlen = 500 -- Wait time for key combo
-vim.opt.updatetime = 300 -- Faster completion
+vim.opt.updatetime = 100 -- Faster completion
 vim.opt.signcolumn = "yes" -- Show useful signs next to line numbers
 
 -- Display options
