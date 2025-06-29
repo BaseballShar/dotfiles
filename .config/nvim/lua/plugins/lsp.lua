@@ -12,6 +12,7 @@ local lsp_servers = {
   "tinymist",
   "ts_ls",
   "vimls",
+  "solargraph",
 }
 
 return {
