@@ -1,13 +1,10 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Path to rust and go programs
-export PATH="$HOME/.cargo/bin:~/.local/bin:$HOME/go/bin:$PATH"
-
-# If you need to have ruby first in your PATH, run:
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
-[ -f "/Users/baseball/.ghcup/env" ] && . "/Users/baseball/.ghcup/env" # ghcup-env
+# Prepended path for priority programs
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:$PATH"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 # Set name of the theme to load
 ZSH_THEME="robbyrussell"
