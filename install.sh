@@ -51,4 +51,3 @@ echo "End of installation script"
 
 # start services
 brew services start sketchybar
-brew services start svim
