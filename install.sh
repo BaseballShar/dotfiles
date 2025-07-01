@@ -11,9 +11,23 @@ else
 fi
 echo ""
 
-# echo "Installing Brew Package"
-# brew bundle
-# echo ""
+echo "Installing essential brew package"
+UTILS=(
+  nvim
+  tmux
+  stow
+  eza
+  fzf
+)
+for util in ${UTILS[@]}; do
+  if which util >/dev/null; then
+    brew install util
+  else
+    echo "$util is installed already!"
+  fi
+done
+echo "Run brew bundle to install the rest"
+echo ""
 
 echo "Checking Oh-My-Zsh"
 if [[ -e ~/.oh-my-zsh ]]; then
