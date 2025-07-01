@@ -75,26 +75,3 @@ nnoremap <silent> <Space>s :w<CR>
 
 let maplocalleader = " "
 let mapleader = " "
-
-" Plugins
-call plug#begin()
-
-" A nice organic theme
-Plug 'sainnhe/everforest'
-
-" Auto disable search hightlight
-Plug 'romainl/vim-cool'
-
-" Vimwiki
-Plug 'vimwiki/vimwiki'
-
-call plug#end()
-
-colorscheme everforest
-
-" Use markdown
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': 'md'}]
-
-vnoremap <Leader>t <Plug>VimwikiToggleListItem
-nnoremap <Leader>t <Plug>VimwikiToggleListItem

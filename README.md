@@ -3,3 +3,4 @@
 2. Run `install.sh` first to install brew tools
 3. Run `install.sh` twice to get omz
 4. Get `sketchybar-app-font`
+5. Manually install wanted programs or run brew bundle

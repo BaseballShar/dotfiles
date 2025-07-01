@@ -1,9 +1,0 @@
-{
-    "fprint": {
-        "prefix": "fprint",
-        "body": [
-            "print(f'${1:output} = {${1:output}}')"
-        ],
-        "description": "Prints a formatted string"
-    }
-}

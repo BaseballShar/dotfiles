@@ -11,9 +11,9 @@ else
 fi
 echo ""
 
-echo "Installing Brew Package"
-brew bundle
-echo ""
+# echo "Installing Brew Package"
+# brew bundle
+# echo ""
 
 echo "Checking Oh-My-Zsh"
 if [[ -e ~/.oh-my-zsh ]]; then
@@ -40,14 +40,13 @@ done
 echo ""
 
 # symlink dotfiles
-echo "Begin symlinking dotfiles"
-# backup zsh config
-if [[ -f ~/.zshrc ]]; then
-  mv ~/.zshrc ~/.zshrc.bak
-fi
-cd ~/dotfiles
-stow .
-echo "End of installation script"
+# echo "Begin symlinking dotfiles"
+# if [[ -f ~/.zshrc ]]; then
+#   mv ~/.zshrc ~/.zshrc.bak
+# fi
+# cd ~/dotfiles
+# stow .
+# echo "End of installation script"
 
 # start services
-brew services start sketchybar
+# brew services start sketchybar
