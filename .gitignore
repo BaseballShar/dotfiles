@@ -1,3 +1,7 @@
+# git
+.config/gh/*
+.config/github-copilot/*
+
 # kitty
 .config/kitty/kitty.conf.bak
 
@@ -22,3 +26,6 @@ Brewfile.lock.json
 
 # nvim
 .config/nvim/lazy-lock.json
+
+# zsh
+.ztemp

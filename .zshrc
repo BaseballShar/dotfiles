@@ -1,10 +1,14 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export DOT_HOME="$HOME/dotfiles"
 
 # Prepended path for priority programs
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:$PATH"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
+# Load temporary configs
+[ -f "$DOT_HOME/.ztemp" ] && . "$DOT_HOME/.ztemp" # ghcup-env
 
 # Set name of the theme to load
 ZSH_THEME="robbyrussell"
