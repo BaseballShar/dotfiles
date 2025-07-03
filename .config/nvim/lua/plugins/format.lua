@@ -1,5 +1,5 @@
 return {
-  -- Excellent formatter that won't make you dizzy
+  -- excellent formatter that won't make you dizzy
   "stevearc/conform.nvim",
   config = function()
     local conform = require("conform")
