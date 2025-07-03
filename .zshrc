@@ -5,6 +5,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # Prepended path for priority programs
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
+# eval "$(mise activate zsh)"
 export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:$PATH"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 

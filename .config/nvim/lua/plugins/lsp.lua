@@ -12,7 +12,9 @@ local lsp_servers = {
   "tinymist",
   "ts_ls",
   "vimls",
-  "solargraph",
+  -- "solargraph",
+  "ruby_lsp",
+  "htmx",
 }
 
 return {
@@ -56,6 +58,14 @@ return {
             },
           },
         },
+      })
+
+      lspconfig.html.setup({
+        filetypes = { "html", "eruby" },
+      })
+
+      lspconfig.emmet_language_server.setup({
+        filetypes = { "javascript", "html", "eruby" },
       })
 
       local builtin = require("telescope.builtin")
