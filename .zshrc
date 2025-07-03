@@ -67,7 +67,7 @@ zstyle ':omz:update' mode auto # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions web-search dirhistory macos colored-man-pages zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions dirhistory macos colored-man-pages zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # End of oh-my-zsh configs
@@ -278,6 +278,7 @@ function file-telescope {
 }
 zle -N file-telescope
 bindkey '^F' file-telescope
+alias fm='file-telescope'
 
 function incubate-stupidity {
   local model=$(ollama list | sed '1d' | awk '{print $1}' | fzf)
