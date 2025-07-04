@@ -4,6 +4,7 @@ return {
   config = function()
     local conform = require("conform")
     local format_enabled = true
+    local disabled_fts = { "ruby", "eruby" }
 
     -- link formatters to filetypes
     conform.setup({
@@ -59,6 +60,14 @@ return {
         print("Form on save disabled")
       end
     end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = disabled_fts,
+      callback = function()
+        format_enabled = false
+        print("Format on save disabled for " .. vim.bo.filetype .. " files")
+      end,
+    })
 
     -- Uncomment if want to manually format
     vim.keymap.set("n", "<Leader>cf", conform.format)
