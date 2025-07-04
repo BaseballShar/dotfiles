@@ -43,3 +43,7 @@
 
 [pull]
   rebase = true
+
+; use mac keychain app to manage git credentials
+[credential]
+	helper = osxkeychain
