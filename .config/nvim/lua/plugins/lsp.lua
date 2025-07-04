@@ -71,7 +71,12 @@ return {
       keymap("n", "<Leader>ws", builtin.lsp_dynamic_workspace_symbols)
       keymap("n", "<Leader>rn", vim.lsp.buf.rename)
       keymap("n", "<Leader>ca", vim.lsp.buf.code_action)
-      keymap("n", "<Leader>ts", builtin.treesitter)
+      keymap(
+        "n",
+        "<Leader>ts",
+        builtin.treesitter,
+        { desc = "Open treesitter symbols" }
+      )
       keymap("i", "<A-s>", vim.lsp.buf.signature_help)
 
       -- Disable builtin lsp mapping conflicting with goto refs
@@ -81,6 +86,23 @@ return {
       vim.keymap.del("n", "grn")
 
       -- Diagonstics
+      -- Toggle diagonstics on and off
+      local function toggle_diagnostic()
+        if vim.diagnostic.is_enabled() then
+          vim.diagnostic.enable(false)
+          print("LSP Diagonstics Disabled")
+        else
+          vim.diagnostic.enable()
+          print("LSP Diagonstics Enabled")
+        end
+      end
+
+      vim.keymap.set(
+        "n",
+        "<Leader>ti",
+        toggle_diagnostic,
+        { desc = "Toggle diagnostic" }
+      )
       keymap("n", "]d", vim.diagnostic.goto_next)
       keymap("n", "[d", vim.diagnostic.goto_prev)
     end,

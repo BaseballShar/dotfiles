@@ -15,7 +15,6 @@ return {
       { "<Leader>cp", desc = "Copilot toggle" },
       { "<Leader>d", group = "Diagnosis" },
       { "<Leader>ds", desc = "Document symbol" },
-      { "<Leader>dt", desc = "Toggle diagnostics" },
       { "<Leader>f", desc = "Find files" },
       { "<Leader>g", group = "Grep" },
       { "<Leader>ga", desc = "Git" },

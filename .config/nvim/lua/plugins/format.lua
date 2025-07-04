@@ -3,7 +3,9 @@ return {
   "stevearc/conform.nvim",
   config = function()
     local conform = require("conform")
-    -- Link formatters to filetypes
+    local format_enabled = true
+
+    -- link formatters to filetypes
     conform.setup({
       formatters_by_ft = {
         css = { "prettier" },
@@ -23,12 +25,18 @@ return {
         sh = { "shfmt" },
         bash = { "shfmt" },
         zsh = { "shfmt" },
+        ruby = { "rufo" },
+        eruby = { "erb_format" },
       },
-      range = { conform.Range },
-      -- Auto format on save
-      format_on_save = {
-        timeout_ms = 500,
-      },
+      range = { conform.range },
+      -- auto format on save
+      format_on_save = function(bufnr)
+        if not format_enabled then
+          return false -- disables formatting on save
+        end
+        -- enables formatting on save
+        return { timeout_ms = 500 }
+      end,
     })
 
     -- Configure formatter arguments
@@ -43,8 +51,23 @@ return {
       },
     }
 
+    local function toggle_formatting()
+      format_enabled = not format_enabled
+      if format_enabled then
+        print("Form on save enabled")
+      else
+        print("Form on save disabled")
+      end
+    end
+
     -- Uncomment if want to manually format
     vim.keymap.set("n", "<Leader>cf", conform.format)
     vim.keymap.set("v", "<Leader>cf", conform.format)
+    vim.keymap.set(
+      "n",
+      "<Leader>tf",
+      toggle_formatting,
+      { desc = "Toggle format on save" }
+    )
   end,
 }
