@@ -32,6 +32,25 @@ return {
       keymap("n", "<Leader>gr", builtin.registers)
       keymap("n", "<Leader>gk", builtin.keymaps)
       keymap("n", "<Leader>gd", builtin.diagnostics)
+
+      -- Default to opening oldfiles if no buffer is specified
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          -- Check if no files were passed as arguments
+          if vim.fn.argc() == 0 then
+            -- Check if the current buffer is empty (no name and empty)
+            local bufname = vim.api.nvim_buf_get_name(0)
+            local is_empty_buffer = bufname == ""
+
+            if is_empty_buffer then
+              -- Open Telescope oldfiles picker
+              vim.schedule(function()
+                require("telescope.builtin").oldfiles()
+              end)
+            end
+          end
+        end,
+      })
     end,
   },
 

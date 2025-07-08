@@ -101,6 +101,8 @@ alias lg='lazygit'
 alias gsw="_fzf_git_each_ref | xargs git checkout"
 alias tiga='tig --all'
 alias nm='neomutt'
+alias gdst='git diff --stat'
+alias gdcst='git diff --cached --stat'
 
 # List all visibles within two strokes
 alias l='eza -F --sort=type'
@@ -163,6 +165,9 @@ function vi {
     vim "$@"
   fi
 }
+
+# Instantly opens up nvim with oldfiles
+alias n="nvim"
 
 # A useful wrapper for nvim with fzf integration
 function nv {
