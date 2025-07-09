@@ -1,6 +1,7 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export DOT_HOME="$HOME/dotfiles"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Prepended path for priority programs
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
