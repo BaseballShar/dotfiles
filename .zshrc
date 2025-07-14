@@ -124,10 +124,26 @@ alias lt='eza -T --sort=type'
 
 # Yummy snake soup
 # python3 is managed by apple
-alias py3='python3'
-# python is managed by conda
-alias py='python'
+alias python='python3'
+alias pip='pip3'
 alias ipy='ipython'
+
+# Auto activate venv if not activated
+deploy() {
+  local PROJ_PATH="$HOME/Projects/spacious-rails"
+  local PIP_PATH="$PROJ_PATH/.venv/bin/pip3"
+  local ACTIVATE_SCRIPT="$PROJ_PATH/.venv/bin/activate"
+  cd $PROJ_PATH
+  if [ "$(command -v pip3)" != "$PIP_PATH" ]; then
+    echo "Activating venv in spacious-rails"
+    source "$ACTIVATE_SCRIPT"
+  else
+    echo "venv is already activated"
+  fi
+  echo "pip in $(which pip3)"
+  echo "Running deployment script"
+  ./bin/deploy
+}
 
 # Nothing a restart can't fix!
 alias rb='unalias -a && source ~/.zshrc'
@@ -299,7 +315,6 @@ file-telescope() {
 }
 zle -N file-telescope
 bindkey '^F' file-telescope
-alias fm='file-telescope'
 
 incubate-stupidity() {
   local model=$(ollama list | sed '1d' | awk '{print $1}' | fzf)
