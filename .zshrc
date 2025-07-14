@@ -132,12 +132,12 @@ alias ytdl='yt-dlp --extract-audio --audio-format mp3'
 
 # Useful functions
 # fzf settings
-function fzf-preview {
+fzf-preview() {
   fzf --preview="bat --color=always {}"
 }
 
 # Editing configs is easier than ever
-function ed {
+ed() {
   case "$1" in
   sh | fish | shell) nvim ~/.config/fish/*.fish ~/.config/fish/custom/*.fish ;;
   nv | nvim) nvim ~/.config/nvim/*.vim ~/.config/nvim/lua/*.lua ~/.config/nvim/lua/plugins/*.lua ;;
@@ -158,7 +158,7 @@ function ed {
 }
 
 # A useful wrapper for vim with fzf integration
-function vi {
+vi() {
   if [[ $# -eq 0 ]]; then
     local files=$(fzf-preview)
     [[ -n "$files" ]] && vim $files
@@ -171,7 +171,7 @@ function vi {
 alias n="nvim"
 
 # A useful wrapper for nvim with fzf integration
-function nv {
+nv() {
   # nv invoked with no arguments
   if [[ $# -eq 0 ]]; then
     fzf-preview | xargs nvim
@@ -187,7 +187,7 @@ function nv {
   fi
 }
 
-function tmux-quantum-switch {
+tmux-quantum-switch() {
   # Search through tmux sessions and project directories to connect
   local sessions=$(tmux ls | sed 's/:.*//g')
   local work_dir=$(find ~/projects ~/documents ~/dotfiles -mindepth 1 -maxdepth 2 -type d)
@@ -224,21 +224,21 @@ function tmux-quantum-switch {
 zle -N tmux-quantum-switch
 bindkey '^T' tmux-quantum-switch
 
-function quantum-teleport {
+quantum-teleport() {
   __zoxide_zi
   zle reset-prompt
 }
 zle -N quantum-teleport
 bindkey '^A' quantum-teleport
 
-function git-manipulator {
+git-manipulator() {
   lazygit
 }
 zle -N git-manipulator
 bindkey '^Q' git-manipulator
 
 # A convenient wrapper for tmux
-function tm {
+tm() {
   # When ran without arguments, attach to the most recent session or create one if none exists
   if [[ $# -eq 0 ]]; then
     if tmux ls >/dev/null 2>&1; then
@@ -273,7 +273,7 @@ function tm {
 }
 
 # Function to change directory based on yazi
-function file-telescope {
+file-telescope() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -286,7 +286,7 @@ zle -N file-telescope
 bindkey '^F' file-telescope
 alias fm='file-telescope'
 
-function incubate-stupidity {
+incubate-stupidity() {
   local model=$(ollama list | sed '1d' | awk '{print $1}' | fzf)
   if [[ -n $model ]]; then
     ollama run $model
@@ -295,7 +295,7 @@ function incubate-stupidity {
 bindkey -s '^O' 'incubate-stupidity\n'
 
 # Function to select music fuzzily
-function mu {
+mu() {
   local file="$(find ~/Documents/Music -type f | fzf)"
 
   # Open only if a file is selected
@@ -308,26 +308,26 @@ function mu {
   fi
 }
 
-function getip {
+getip() {
   local publicIP=$(curl -s ifconfig.me)
   local privateIP=$(ifconfig | grep 'inet ' | awk '{print $2}' | tail -n +2)
   echo "Public IP: $publicIP"
   echo "Private IP: $privateIP"
 }
 
-function getweather {
+getweather() {
   curl -s 'wttr.in?format=%c+T:%t+H:%h+R:%p+W:%w+UV:%u+M:%m\n'
 }
 
 # Crop the initial gap of mp3 files
-function crop {
+crop() {
   local file=$1
   local start=$2
   local finish=$3
   ffmpeg -i $file -ss $start -to $finish -acodec copy output.mp3
 }
 
-function timer {
+timer() {
   local ts=(
     5m
     15m
@@ -348,7 +348,7 @@ function timer {
   termdown $t && say $msg
 }
 
-function yt {
+yt() {
   case "$1" in
   l | list)
     for url in $YT_LIST; do
