@@ -294,6 +294,75 @@ incubate-stupidity() {
 }
 bindkey -s '^O' 'incubate-stupidity\n'
 
+# use $1 as keyword to search recursively
+# open searched files in nvim buffers if less than 5 files are founded
+# otherwise show the list of files matched and how many files are match, and offer the user to filter than by filetypes
+# e.g. haml, rb. then open the filtered files in nvim buffers
+goto() {
+  local keyword=$1
+  local files
+  local filtered_files
+  local filter
+  local count
+
+  # Get list of files containing the keyword
+  # -l: print only file names
+  # -i: case-insensitive
+  files=($(rg -li --files-with-matches -- "$keyword"))
+
+  count=${#files[@]}
+
+    if (( count == 0 )); then
+      echo "No files found containing '$keyword'"
+      return 1
+    elif (( count < 5 )); then
+      echo "Opening $count files in nvim..."
+      nvim "${files[@]}"
+    else
+      for f in "${files[@]}"; do
+        echo "  $f"
+      done
+      echo "$count files found containing '$keyword':"
+
+      echo
+      echo "Enter comma-separated file extensions to filter by (e.g. rb,haml), or press Enter to open all:"
+      read -r filter
+
+      if [[ -z $filter ]]; then
+        echo "Opening all $count files in nvim..."
+        nvim "${files[@]}"
+      else
+        # Convert filter to array, trim spaces
+        local IFS=',' filter_exts=(${(s/,/)filter})
+
+        # Trim whitespace from extensions
+        for i in {1..${#filter_exts[@]}}; do
+          filter_exts[$i]="${filter_exts[$i]// /}"
+        done
+
+        # Filter files by extension
+        filtered_files=()
+        for f in "${files[@]}"; do
+          for ext in "${filter_exts[@]}"; do
+            if [[ $f == *.$ext ]]; then
+              filtered_files+=("$f")
+              break
+            fi
+          done
+        done
+
+        local filtered_count=${#filtered_files[@]}
+          if (( filtered_count == 0 )); then
+            echo "No files matched the filter extensions."
+            return 1
+          fi
+
+          echo "Opening $filtered_count filtered files in nvim..."
+          nvim "${filtered_files[@]}"
+      fi
+    fi
+  }
+
 # Function to select music fuzzily
 mu() {
   local file="$(find ~/Documents/Music -type f | fzf)"
