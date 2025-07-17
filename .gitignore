@@ -29,3 +29,6 @@ Brewfile.lock.json
 
 # zsh
 .ztemp
+
+# work
+secleft.sh
