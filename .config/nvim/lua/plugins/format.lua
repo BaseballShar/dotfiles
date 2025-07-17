@@ -65,7 +65,6 @@ return {
       pattern = disabled_fts,
       callback = function()
         format_enabled = false
-        print("Format on save disabled for " .. vim.bo.filetype .. " files")
       end,
     })
 

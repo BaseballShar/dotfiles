@@ -24,7 +24,6 @@ return {
       { "<Leader>gk", desc = "Keymaps" },
       { "<Leader>gm", desc = "Marks" },
       { "<Leader>gr", desc = "Registers" },
-      { "<Leader>gt", desc = "Todo" },
       { "<Leader>h", group = "Git" },
       { "<Leader>h", group = "Git", mode = "v" },
       { "<Leader>l", group = "Latex/Typst" },

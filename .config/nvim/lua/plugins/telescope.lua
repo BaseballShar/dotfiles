@@ -68,8 +68,32 @@ return {
           options = "--multi --bind=ctrl-a:select-all,ctrl-q:accept",
         })
       end, {})
-
       keymap("n", "<Leader>gf", ":LinesMulti<CR>", opts)
+
+      vim.api.nvim_create_user_command("Goto", function(options)
+        -- try use first arg as keyword, if empty use clipboard
+        local keyword = options.args
+        if keyword == nil or keyword == "" then
+          keyword = vim.fn.getreg("*")
+        end
+
+        local rg_cmd = "rg -li " .. vim.fn.shellescape(keyword)
+        local spec = {
+          source = rg_cmd,
+          options = "--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all",
+          ["sink*"] = function(lines)
+            if not lines or vim.tbl_isempty(lines) then
+              return
+            end
+            for _, file in ipairs(lines) do
+              vim.cmd("edit " .. vim.fn.fnameescape(file))
+            end
+          end,
+        }
+
+        vim.fn["fzf#run"](vim.fn["fzf#wrap"](spec))
+      end, { nargs = "?" })
+      keymap("n", "<Leader>gt", ":Goto<CR>", opts)
     end,
   },
 

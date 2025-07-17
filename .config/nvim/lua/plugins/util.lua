@@ -140,7 +140,6 @@ return {
     -- opts = {},
     config = function()
       require("todo-comments").setup()
-      keymap("n", "<Leader>gt", "<Cmd>TodoTelescope<CR>")
     end,
   },
 
@@ -241,6 +240,18 @@ return {
         ["h"] = "actions.parent",
         ["l"] = "actions.select",
       },
+    },
+  },
+
+  { "tpope/vim-rails" },
+
+  -- Finally db in nvim
+  { "tpope/vim-dadbod" },
+  { "kristijanhusak/vim-dadbod-completion" },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    keys = {
+      { "<Leader>db", "<Cmd>DBUI<CR>", desc = "Launch DB UI" },
     },
   },
 }
