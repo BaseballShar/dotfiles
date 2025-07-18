@@ -69,7 +69,15 @@ zstyle ':omz:update' mode auto # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions dirhistory macos colored-man-pages zsh-syntax-highlighting)
+plugins=(
+  colored-man-pages
+  dirhistory
+  git
+  macos
+  rails
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 # End of oh-my-zsh configs
@@ -410,4 +418,3 @@ checkin() {
   local line="time_arrive=$time_input"
   sed -i '' "1s/.*/$line/" $HOME/dotfiles/secleft.sh
 }
-alias lo=lazydocker
