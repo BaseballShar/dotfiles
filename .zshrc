@@ -69,7 +69,15 @@ zstyle ':omz:update' mode auto # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions dirhistory macos colored-man-pages zsh-syntax-highlighting)
+plugins=(
+  colored-man-pages
+  dirhistory
+  git
+  macos
+  rails
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 # End of oh-my-zsh configs
@@ -419,4 +427,79 @@ checkin() {
   local line="time_arrive=$time_input"
   sed -i '' "1s/.*/$line/" $HOME/dotfiles/secleft.sh
 }
-alias lo=lazydocker
+
+__wp_local_base_path() {
+  local locale=$1
+  local base_path="$HOME/Projects/spacious-blogs"
+  echo "$base_path"
+}
+
+__wp_remote_base_path() {
+  local locale=$1
+  local host
+  local user="bitnami"
+
+  case $locale in
+  en)
+    host="en-blog-staging"
+    ;;
+  zh-tw)
+    host="zh-blog-staging"
+    ;;
+  esac
+  echo "$user@$host:/opt/bitnami"
+}
+
+# given a file / use git files deploy it the remote wp server
+wp() {
+  # going to project root to ensure path correctness
+  echo "Going to project base path"
+  cd $(__wp_local_base_path)
+
+  # choose what files to deploy, if empty use git files
+  local files=($1)
+  if [[ -z $files ]]; then
+    echo "Using git files to deploy"
+    files=($(git ls-files -m))
+  fi
+  echo "Files to be deploy are:"
+  for file in ${files[@]}; do
+    echo $file
+  done
+  echo ""
+
+  # choose what locale to deploy
+  local lang
+  local locale
+  read -k 1 -s "lang?To what locale? (e for en, z for zh-tw)"
+  echo ""
+  case $lang in
+  e) locale="en" ;;
+  z) locale="zh-tw" ;;
+  esac
+  echo ""
+
+  # final confirmation before deploying
+  echo "Are you sure to deploy to $(__wp_remote_base_path $locale)"
+  local choice
+
+  # confirm before deploying
+  read -k 1 -q -s "choice?(y/n)"
+  echo "\n"
+
+  case $choice in
+  y | Y)
+    echo "Begin deploying"
+    for file in ${files[@]}; do
+      local local_path="$(__wp_local_base_path $locale)/$file"
+      local remote_path="$(echo $(__wp_remote_base_path $locale)/$file | sed s/current/blog/)"
+      echo "FROM: $local_path"
+      echo "  TO: $remote_path"
+      scp -r $local_path $remote_path
+    done
+    ;;
+  n | N)
+    echo "Deploying aborted"
+    ;;
+  esac
+}
