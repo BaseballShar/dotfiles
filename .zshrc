@@ -466,28 +466,60 @@ wp() {
   echo "Going to project base path"
   cd $(__wp_local_base_path)
 
-  # choose what files to deploy, if empty use git files
-  local files=($1)
-  if [[ -z $files ]]; then
-    echo "Using git files to deploy"
+  # this has several modes depending on $1
+  # a to deploy all wp-content files
+  # g to deploy all dirty files
+  # d to deploy all modified files since the dev branch
+  # otherwise track $1 as file name
+  local files
+  case $1 in
+  a)
+    echo "Deploying all wp-content files"
+    local template_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child/templates -type f))
+    local code_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child -maxdepth 1 -type f \( -name '*.css' -o -name '*.php' \)))
+    files=("${template_files[@]}" "${code_files[@]}")
+    ;;
+  d)
+    echo "Deploying all modified files since the dev branch"
+    files=($(git diff --name-only dev))
+    ;;
+  g)
+    echo "Deploying all modified files in git"
     files=($(git ls-files -m))
-  fi
+    ;;
+  h)
+    echo "wordpress deployment helper (wp):"
+    echo "a: Deploy all wp-content files"
+    echo "d: Deploy all modified files since dev"
+    echo "g: Deploy all modified files in git"
+    return
+    ;;
+  *)
+    files=($1)
+    if [[ -z $files ]]; then
+      echo "Deploying all modified files in git"
+      files=($(git ls-files -m))
+    fi
+    ;;
+  esac
+
+  # choose what files to deploy, if empty use git files
   echo "Files to be deploy are:"
   for file in ${files[@]}; do
     echo $file
   done
   echo ""
 
-  # choose what locale to deploy
-  local lang
+  # decide what locale to deploy
+  # do not even try to deploy to mixed locale, will explode
   local locale
-  read -k 1 -s "lang?To what locale? (e for en, z for zh-tw)"
-  echo ""
-  case $lang in
-  e) locale="en" ;;
-  z) locale="zh-tw" ;;
-  esac
-  echo ""
+  if echo $files[1] | grep "wordpress/en" >/dev/null; then
+    locale="en"
+  elif echo $files[1] | grep "wordpress/zh-tw" >/dev/null; then
+    locale="zh-tw"
+  fi
+
+  echo "Will deploy to $locale"
 
   # final confirmation before deploying
   echo "Are you sure to deploy to $(__wp_remote_base_path $locale)"
