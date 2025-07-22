@@ -15,6 +15,8 @@ local lsp_servers = {
   -- "solargraph",
   "ruby_lsp",
   "htmx",
+  -- "intelephense",
+  "phpactor",
 }
 
 return {
@@ -65,7 +67,7 @@ return {
       })
 
       lspconfig.emmet_language_server.setup({
-        filetypes = { "javascript", "html", "eruby" },
+        filetypes = { "javascript", "html", "eruby", "php" },
       })
 
       local builtin = require("telescope.builtin")
