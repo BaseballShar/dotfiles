@@ -187,6 +187,10 @@ nv() {
   fi
 }
 
+nvg() {
+  nvim $(git ls-files -m)
+}
+
 tmux-quantum-switch() {
   # Search through tmux sessions and project directories to connect
   local sessions=$(tmux ls | sed 's/:.*//g')
