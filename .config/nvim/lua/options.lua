@@ -8,6 +8,7 @@ vim.opt.termguicolors = true -- Enable 24 bit colors
 vim.opt.timeoutlen = 500 -- Wait time for key combo
 vim.opt.updatetime = 100 -- Faster completion
 vim.opt.signcolumn = "yes" -- Show useful signs next to line numbers
+vim.opt.swapfile = false
 
 -- Display options
 vim.opt.number = true
