@@ -254,4 +254,12 @@ return {
       { "<Leader>db", "<Cmd>DBUI<CR>", desc = "Launch DB UI" },
     },
   },
+
+  -- undoing is less painful finally
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<Leader>u", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
+    },
+  },
 }
