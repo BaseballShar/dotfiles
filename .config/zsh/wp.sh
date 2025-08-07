@@ -54,7 +54,8 @@ wp() {
     echo "Deploying all wp-content files"
     local template_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child/templates -type f))
     local code_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child -maxdepth 1 -type f \( -name '*.css' -o -name '*.php' \)))
-    files=("${template_files[@]}" "${code_files[@]}")
+    local js_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child/js -type f | grep custom))
+    files=("${template_files[@]}" "${code_files[@]}" "${js_files[@]}")
     ;;
   b)
     local branch="dev"
