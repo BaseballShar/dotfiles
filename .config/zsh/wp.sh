@@ -88,6 +88,9 @@ wp() {
     ;;
   esac
 
+  # Do not deploy any dotfile
+  # files=$(printf "%s\n" "${files[@]}" | rg -v '^\.')
+
   # choose what files to deploy, if empty use git files
   echo "Files to be deploy are:"
   for file in ${files[@]}; do
@@ -132,4 +135,15 @@ wp() {
 
   # return to previous working directory
   cd $cwd
+}
+
+# Automate copy a commit to staging, deploying it and switching back
+wpc() {
+  local from_branch=$(git branch --show-current)
+  local to_branch="temp/staging"
+
+  git checkout $to_branch
+  git cherry-pick $from_branch
+  wp b HEAD^
+  git checkout $from_branch
 }
