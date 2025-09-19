@@ -86,6 +86,8 @@ eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 source ~/.config/zsh/fzf-git.sh
+source ~/.config/zsh/wp.sh
+source ~/.config/zsh/rails.sh
 
 # Enables vim keybinds in zsh
 bindkey -v
@@ -104,6 +106,14 @@ alias tiga='tig --all'
 alias nm='neomutt'
 alias gdst='git diff --stat'
 alias gdcst='git diff --cached --stat'
+
+tigf() {
+  tig $(git branch -a --list "feature*" | sed 's/^[*] /  /')
+}
+
+tigb() {
+  tig $(git branch -a --list "backup*" | sed 's/^[*] /  /')
+}
 
 # List all visibles within two strokes
 alias l='eza -F --sort=type'
