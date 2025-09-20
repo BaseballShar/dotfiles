@@ -72,7 +72,7 @@ inner.vertical = 0
 outer.left = 0
 outer.bottom = 0
 # Top margin is less when used in laptop mode with notch
-outer.top = [{ monitor.dell = 40 }, 8]
+outer.top = 0
 outer.right = 0
 
 # 'main' binding mode declaration
