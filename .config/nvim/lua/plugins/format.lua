@@ -4,7 +4,8 @@ return {
   config = function()
     local conform = require("conform")
     local format_enabled = true
-    local disabled_fts = { "ruby", "eruby", "yaml", "css", "scss" }
+    local disabled_fts =
+      { "ruby", "eruby", "yaml", "css", "scss", "javascript", "typescript" }
 
     -- link formatters to filetypes
     conform.setup({

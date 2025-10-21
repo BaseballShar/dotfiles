@@ -3,6 +3,7 @@ local lsp_servers = {
   "bashls",
   "cssls",
   "emmet_language_server",
+  "eslint",
   "html",
   "lua_ls",
   "pyright",
