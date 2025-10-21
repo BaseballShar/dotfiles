@@ -137,7 +137,7 @@ alias pip='pip3'
 alias ipy='ipython'
 
 # Auto activate venv if not activated
-deploy() {
+dp() {
   local PROJ_PATH="$HOME/Projects/spacious-rails"
   local PIP_PATH="$PROJ_PATH/.venv/bin/pip3"
   local ACTIVATE_SCRIPT="$PROJ_PATH/.venv/bin/activate"
@@ -150,7 +150,9 @@ deploy() {
   fi
   echo "pip in $(which pip3)"
   echo "Running deployment script"
-  ./bin/deploy
+  bundle install
+  # Answer 2 for staging, cur for current branch, and yes 4 times to confirm
+  echo -e "2\ncur\ny\ny\ny\ny" | ./bin/deploy
 }
 
 # Nothing a restart can't fix!
