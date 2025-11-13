@@ -23,7 +23,7 @@ return {
       })
       local builtin = require("telescope.builtin")
       keymap("n", "<Leader>f", builtin.find_files)
-      keymap("n", "<Leader>b", builtin.buffers)
+      -- keymap("n", "<Leader>b", builtin.buffers)
       keymap("n", "<Leader>/", builtin.grep_string)
       keymap("n", "<Leader><Leader>", builtin.current_buffer_fuzzy_find)
       keymap("n", "<Leader>gc", builtin.commands)
@@ -104,5 +104,43 @@ return {
     config = function()
       require("telescope").load_extension("fzf")
     end,
+  },
+
+  -- trying to re-introduce file explorer
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 50,
+        },
+      })
+      keymap("n", "<Leader>x", "<Cmd>NvimTreeFindFileToggle<CR>")
+    end,
+  },
+
+  -- Giving it one more chance, tree view of buffer is sorta useful
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    config = function()
+      require("neo-tree").setup({
+        window = {
+          width = 50,
+        },
+      })
+      keymap("n", "<Leader>b", "<Cmd>Neotree buffers toggle<CR>")
+    end,
+    lazy = false, -- neo-tree will lazily load itself
   },
 }

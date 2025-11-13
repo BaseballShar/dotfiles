@@ -18,6 +18,7 @@ local lsp_servers = {
   "htmx",
   -- "intelephense",
   "phpactor",
+  "stylelint_lsp",
 }
 
 return {
