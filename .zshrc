@@ -87,8 +87,6 @@ eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 source ~/.config/zsh/fzf-git.sh
-source ~/.config/zsh/wp.sh
-source ~/.config/zsh/rails.sh
 
 # Enables vim keybinds in zsh
 bindkey -v
