@@ -160,6 +160,7 @@ return {
           idle_stop = 1000,
         },
       })
+      require("mini.align").setup()
     end,
   },
 

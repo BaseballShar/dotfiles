@@ -15,7 +15,7 @@ local lsp_servers = {
   "vimls",
   -- "solargraph",
   "ruby_lsp",
-  "htmx",
+  -- "htmx",
   -- "intelephense",
   "phpactor",
   "stylelint_lsp",
