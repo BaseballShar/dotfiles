@@ -52,9 +52,21 @@ wp() {
   case $1 in
   a)
     echo "Deploying all wp-content files"
-    local template_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child/templates -type f))
-    local code_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child -maxdepth 1 -type f \( -name '*.css' -o -name '*.php' \)))
-    local js_files=($(find wordpress/zh-tw/current/wp-content/themes/twentyseventeen-child/js -type f | grep custom))
+
+    # decide what locale to deploy
+    # do not even try to deploy to mixed locale, will explode
+    local locale
+    if echo $cwd | grep "wordpress/en" >/dev/null; then
+      locale="en"
+    elif echo $cwd | grep "wordpress/zh-tw" >/dev/null; then
+      locale="zh-tw"
+    fi
+
+    echo "Will deploy to $locale"
+
+    local template_files=($(find wordpress/$locale/current/wp-content/themes/twentyseventeen-child/templates -type f))
+    local code_files=($(find wordpress/$locale/current/wp-content/themes/twentyseventeen-child -maxdepth 1 -type f \( -name '*.css' -o -name '*.php' \)))
+    local js_files=($(find wordpress/$locale/current/wp-content/themes/twentyseventeen-child/js -type f | grep custom))
     files=("${template_files[@]}" "${code_files[@]}" "${js_files[@]}")
     ;;
   b)
@@ -98,19 +110,8 @@ wp() {
   done
   echo ""
 
-  # decide what locale to deploy
-  # do not even try to deploy to mixed locale, will explode
-  local locale
-  if echo $files[1] | grep "wordpress/en" >/dev/null; then
-    locale="en"
-  elif echo $files[1] | grep "wordpress/zh-tw" >/dev/null; then
-    locale="zh-tw"
-  fi
-
-  echo "Will deploy to $locale"
-
   # final confirmation before deploying
-  echo "Are you sure to deploy to $(__wp_remote_base_path $locale)"
+  echo "Are you sure to deploy ?"
   local choice
 
   # confirm before deploying
@@ -120,7 +121,18 @@ wp() {
   case $choice in
   y | Y)
     echo "Begin deploying"
+
     for file in ${files[@]}; do
+
+      # decide what locale to deploy
+      # support mixed locale files
+      local locale
+      if echo $file | grep "wordpress/en" >/dev/null; then
+        locale="en"
+      elif echo $file | grep "wordpress/zh-tw" >/dev/null; then
+        locale="zh-tw"
+      fi
+
       local local_path="$(__wp_local_base_path $locale)/$file"
       local remote_path="$(echo $(__wp_remote_base_path $locale)/$file | sed s/current/blog/)"
       echo "FROM: $local_path"
