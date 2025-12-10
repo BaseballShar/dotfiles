@@ -15,7 +15,7 @@ dp() {
   fi
   echo "pip in $(which pip3)"
   echo "Running deployment script"
-  # bundle install
+  bundle install
   # Answer 2 for staging, cur for current branch, and yes 4 times to confirm
   # echo -e "2\ncur\ny\ny\ny\ny" | ./bin/deploy
   ./bin/deploy
