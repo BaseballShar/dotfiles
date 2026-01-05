@@ -42,4 +42,4 @@ map("n", "<Leader>s", ":w<CR>", "Save")
 -- Open nvim builtin terminal
 map("n", "<C-t>", ":terminal<CR>", "Open builtin terminal")
 
-map("n", "<Leader>e", ":bufdo e<CR>", "Reload all buffers")
+map("n", "<Leader>e", ":bufdo e<CR><C-o>", "Reload all buffers")
