@@ -1,4 +1,4 @@
-time_arrive="9:15"
+time_arrive=9:00
 h_a=$(echo $time_arrive | cut -d":" -f1)
 m_a=$(echo $time_arrive | cut -d":" -f2)
 time_leave=$((($h_a + 9) * 3600 + $m_a * 60))
