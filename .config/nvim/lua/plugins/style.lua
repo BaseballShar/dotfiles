@@ -37,4 +37,12 @@ return {
       },
     },
   },
+
+  -- This highlights colours
+  {
+    "brenoprata10/nvim-highlight-colors",
+    opts = {
+      render = "virtual",
+    },
+  },
 }

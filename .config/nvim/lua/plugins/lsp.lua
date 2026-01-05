@@ -152,6 +152,10 @@ return {
           { name = "buffer" },
           { name = "path" },
         }),
+        -- Add colour icons to colours
+        formatting = {
+          format = require("nvim-highlight-colors").format,
+        },
       })
 
       -- Set up vim-dadbod for sql files
